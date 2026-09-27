@@ -1,0 +1,500 @@
+1	A1	爱	ài	love	사랑하다	любити; любов
+2	A1	爱好	àihào	hobby	취미	хобі, захоплення
+3	A1	八	bā	eight	8, 여덟	вісім
+4	A1	爸爸|爸	bàba|bà	father/dad	아빠, 아버지	тато, батько
+5	A1	吧	ba	(particle: "let's …", "…, right?")	~하자, ~이지? (제안·추측의 어기조사)	(модальна частка: пропозиція, припущення)
+6	A1	白(形)	bái	white	하얗다, 흰색	білий
+7	A1	白天	báitiān	daytime	낮	день (світла пора доби)
+8	A1	百	bǎi	hundred	백(100)	сто
+9	A1	班	bān	class (group of students)	반, 학급	клас, група
+10	A1	半	bàn	half (三点半 = 3:30)	반, 절반	половина, пів
+11	A1	半年	bàn nián	half year	반년	пів року
+12	A1	半天	bàntiān	half day	한나절; 한참 동안	пів дня; довго
+13	A1	帮	bāng	help	돕다	допомагати
+14	A1	帮忙	bāng/máng	help (verb)	돕다, 일손을 거들다	допомагати, робити послугу
+15	A1	包	bāo	bag	가방; 싸다	сумка; загортати
+16	A1	包子	bāozi	steamed bun	(소가 든) 찐빵, 바오쯔	баоцзи (парожина з начинкою)
+17	A1	杯	bēi	cup	잔(양사)	чашка (лічильне слово)
+18	A1	杯子	bēizi	glass/cup	컵, 잔	склянка, чашка
+19	A1	北	běi	north	북, 북쪽	північ
+20	A1	北边	běibiān	north side	북쪽	північна сторона
+21	A1	北京	Běijīng	Beijing	베이징	Пекін
+22	A1	本(量)	běn	(measure word for books)	권(책을 세는 양사)	(лічильне слово для книжок)
+23	A1	本子	běnzi	notebook	공책, 노트	зошит
+24	A1	比	bǐ	compare	~보다; 비교하다	ніж; порівнювати
+25	A1	别(副)	bié	don't	~하지 마라	не (роби), не треба
+26	A1	别的	biéde	other	다른 것, 다른	інший, інше
+27	A1	别人	bié·rén	others	다른 사람, 남	інші люди
+28	A1	病	bìng	illness	병; 병나다	хвороба; хворіти
+29	A1	病人	bìngrén	patient	환자	пацієнт, хворий
+30	A1	不大	bù dà	not big	크지 않다; 그다지 ~하지 않다	невеликий; не дуже
+31	A1	不对	bùduì	incorrect	틀리다, 옳지 않다	неправильно
+32	A1	不客气	bù kèqi	you're welcome	천만에요	будь ласка (у відповідь на подяку)
+33	A1	不用	bùyòng	no need	~할 필요 없다	не треба, не потрібно
+34	A1	不	bù	not	아니다, ~하지 않다	не, ні
+35	A1	菜	cài	vegetable	요리, 반찬; 채소	страва; овочі
+36	A1	茶	chá	tea	차	чай
+37	A1	差	chà	poor (quality); lacking	나쁘다; 부족하다, 모자라다	поганий; бракувати
+38	A1	长	cháng	long	길다	довгий
+39	A1	常常	chángcháng	often	자주, 늘	часто
+40	A1	唱	chàng	sing	노래하다	співати
+41	A1	唱歌	chàng//gē	sing a song	노래를 부르다	співати пісню
+42	A1	车	chē	vehicle	차	машина, транспорт
+43	A1	车票	chēpiào	bus/train ticket	차표, 승차권	квиток (на транспорт)
+44	A1	车上	chē shang	on the vehicle	차 안(에서)	у транспорті
+45	A1	车站	chēzhàn	bus/train station	정류장, 역	станція, зупинка
+46	A1	吃	chī	eat	먹다	їсти
+47	A1	吃饭	chī/fàn	have a meal	밥을 먹다, 식사하다	їсти, обідати
+48	A1	出	chū	go/come out; exit	나가다, 나오다	виходити
+49	A1	出来	chū/·lái	come out	나오다	виходити (сюди)
+50	A1	出去	chū/·qù	go out (away from speaker)	나가다	виходити (туди)
+51	A1	穿	chuān	wear	입다, 신다	одягати, носити
+52	A1	床	chuáng	bed	침대	ліжко
+53	A1	次(量)	cì	time(s) (measure word for occurrences)	번, 회(횟수를 세는 양사)	раз (лічильне слово)
+54	A1	从	cóng	from	~에서, ~부터	з, від
+55	A1	错	cuò	wrong	틀리다; 잘못	помилковий, неправильний
+56	A1	打(动)	dǎ	hit	치다, 때리다	бити, ударяти
+57	A1	打车	dǎ//chē	take a taxi	택시를 타다	їхати на таксі
+58	A1	打电话	dǎ diànhuà	make a phone call	전화를 걸다	телефонувати
+59	A1	打开	dǎ//kāi	open; turn on	열다, 켜다	відкривати, вмикати
+60	A1	打球	dǎ qiú	play ball	공놀이를 하다	грати в м'яч
+61	A1	大	dà	big	크다	великий
+62	A1	大学	dàxué	university	대학교	університет
+63	A1	大学生	dàxuéshēng	college student	대학생	студент
+64	A1	到	dào	arrive	도착하다; ~까지	прибувати; до
+65	A1	得到	dé//dào	obtain	얻다	отримувати
+66	A1	地	de	(particle: "-ly", before verbs)	~하게 (부사어를 만드는 구조조사)	(структурна частка обставини)
+67	A1	的	de	(particle: 's, of; links modifiers)	~의, ~한 (구조조사)	(присвійна структурна частка)
+68	A1	等(动)	děng	wait	기다리다	чекати
+69	A1	地	dì	ground	땅, 바닥	земля, підлога
+70	A1	地点	dìdiǎn	location	장소, 지점	місце, пункт
+71	A1	地方	dìfang	place	곳, 장소	місце
+72	A1	地上	dì shang	on the ground	땅바닥, 바닥 위	на землі, на підлозі
+73	A1	地图	dìtú	map	지도	карта
+74	A1	弟弟|弟	dìdi|dì	younger brother	남동생	молодший брат
+75	A1	第(第二)	dì(dì-èr)	(ordinal prefix: 第一 = first)	제~, ~번째 (서수 접두사)	(префікс порядкового числівника)
+76	A1	点	diǎn	o'clock	시(時); 점	година (о котрій); крапка
+77	A1	电	diàn	electricity	전기	електрика
+78	A1	电话	diànhuà	telephone	전화	телефон
+79	A1	电脑	diànnǎo	computer	컴퓨터	комп'ютер
+80	A1	电视	diànshì	TV	텔레비전	телебачення
+81	A1	电视机	diànshìjī	television set	텔레비전 수상기	телевізор
+82	A1	电影	diànyǐng	movie	영화	фільм, кіно
+83	A1	电影院	diànyǐngyuàn	cinema	영화관	кінотеатр
+84	A1	东	dōng	east	동, 동쪽	схід
+85	A1	东边	dōngbiān	east side	동쪽	східна сторона
+86	A1	东西	dōngxi	thing	물건	річ
+87	A1	动	dòng	move	움직이다	рухатися
+88	A1	动作	dòngzuò	action	동작	рух, дія
+89	A1	都	dōu	all	모두, 다	усі, все
+90	A1	读	dú	read	읽다	читати
+91	A1	读书	dú/shū	read books; study (at school)	책을 읽다; 공부하다	читати; навчатися
+92	A1	对(形)	duì	correct	맞다, 옳다	правильний
+93	A1	对不起	duìbuqǐ	sorry	미안합니다	вибачте
+94	A1	多(形、代)	duō	many	많다; 얼마나	багато; наскільки
+95	A1	多少	duōshǎo	how much/many	얼마, 몇	скільки
+96	A1	饿	è	hungry	배고프다	голодний
+97	A1	儿子	érzi	son	아들	син
+98	A1	二	èr	two (in numbers: 十二, 第二)	2, 둘	два
+99	A1	饭	fàn	meal/rice	밥, 식사	їжа, рис
+100	A1	饭店	fàndiàn	restaurant	식당; 호텔	ресторан; готель
+101	A1	房间	fángjiān	room	방	кімната
+102	A1	房子	fángzi	house	집	будинок
+103	A1	放	fàng	put	놓다, 두다	класти, ставити
+104	A1	放假	fàng//jià	have a holiday	방학하다, 휴가를 보내다	мати канікули, відпочинок
+105	A1	放学	fàng//xué	school's out	학교가 파하다, 하교하다	закінчити уроки
+106	A1	飞	fēi	fly	날다	літати
+107	A1	飞机	fēijī	airplane	비행기	літак
+108	A1	非常	fēicháng	extremely	매우, 대단히	дуже
+109	A1	分(名、量)	fēn	minute/(measure word)	분; 점(점수); 펀(화폐 단위)	хвилина; бал; фень
+110	A1	风	fēng	wind	바람	вітер
+111	A1	干	gān	dry	마르다, 건조하다	сухий
+112	A1	干净	gānjìng	clean	깨끗하다	чистий
+113	A1	干	gàn	do (colloquial)	하다	робити
+114	A1	干什么	gàn shénme	what to do	무엇을 하다, 뭐 해?	що робити
+115	A1	高	gāo	tall/high	높다, (키가) 크다	високий
+116	A1	高兴	gāoxìng	happy	기쁘다	радісний
+117	A1	告诉	gàosu	tell	알리다, 말해 주다	повідомляти, казати
+118	A1	哥哥|哥	gēge|gē	older brother	형, 오빠	старший брат
+119	A1	歌	gē	song	노래	пісня
+120	A1	个	gè	(general measure word)	개, 명 (일반 양사)	(загальне лічильне слово)
+121	A1	给	gěi	give	주다; ~에게	давати; для, кому
+122	A1	跟	gēn	with	~와/과; 따라가다	з; іти за
+123	A1	工人	gōngrén	worker	노동자	робітник
+124	A1	工作	gōngzuò	work	일하다; 일, 직업	працювати; робота
+125	A1	关(动)	guān	close; turn off	닫다, 끄다	зачиняти, вимикати
+126	A1	关上	guān shang	shut (completely)	닫다	зачинити
+127	A1	贵	guì	expensive	비싸다	дорогий
+128	A1	国	guó	country	나라	країна
+129	A1	国家	guójiā	nation	국가	держава
+130	A1	国外	guó wài	abroad	외국, 해외	за кордоном
+131	A1	过	guò	pass	지나다, 건너다; 보내다	проходити, переходити
+132	A1	还	hái	still	아직, 여전히; 또	ще, досі
+133	A1	还是	háishi	or	아니면; 여전히	чи, або; все ж
+134	A1	还有	hái yǒu	there's also	그리고, 또 ~도 있다	а також, ще є
+135	A1	孩子	háizi	child; son or daughter	아이	дитина
+136	A1	汉语	Hànyǔ	Chinese (the language, Hanyu)	중국어	китайська мова
+137	A1	汉字	Hànzì	Chinese character	한자	китайський ієрогліф
+138	A1	好(形)	hǎo	good	좋다	добрий, гарний
+139	A1	好吃	hǎochī	delicious	맛있다	смачний
+140	A1	好看	hǎokàn	good-looking	보기 좋다, 예쁘다	гарний (на вигляд)
+141	A1	好听	hǎotīng	pleasant to hear	듣기 좋다	приємний на слух
+142	A1	好玩儿	hǎowánr	fun	재미있다	цікавий, веселий
+143	A1	号	hào	number	일(날짜); 번호	число (дата); номер
+144	A1	喝	hē	drink	마시다	пити
+145	A1	和	hé	and	~와/과	і, та
+146	A1	很	hěn	very	매우, 아주	дуже
+147	A1	后	hòu	back	뒤, 후	задня частина; після
+148	A1	后边	hòubiān	back side	뒤쪽	позаду
+149	A1	后天	hòutiān	day after tomorrow	모레	післязавтра
+150	A1	花(名)	huā	flower	꽃	квітка
+151	A1	话	huà	words/speech	말	слова, мова
+152	A1	坏	huài	bad; broken	나쁘다; 고장 나다	поганий; зламаний
+153	A1	还	huán	return (give back)	돌려주다, 갚다	повертати (річ)
+154	A1	回(动)	huí	return (go/come back)	돌아가다, 돌아오다	повертатися
+155	A1	回答	huídá	answer	대답하다	відповідати
+156	A1	回到	huídào	return to	~로 돌아가다	повернутися до
+157	A1	回家	huí jiā	go home	집에 돌아가다	йти додому
+158	A1	回来	huí/·lái	come back	돌아오다	повертатися (сюди)
+159	A1	回去	huí/·qù	go back	돌아가다	повертатися (туди)
+160	A1	会(动)	huì	can (know how to); will	~할 줄 알다; ~할 것이다	уміти; мабуть буде
+161	A1	火车	huǒchē	train	기차	поїзд
+162	A1	机场	jīchǎng	airport	공항	аеропорт
+163	A1	机票	jīpiào	plane ticket	비행기표	авіаквиток
+164	A1	鸡蛋	jīdàn	egg	달걀	куряче яйце
+165	A1	几	jǐ	several	몇; 몇몇	скільки; кілька
+166	A1	记	jì	remember; write down	기억하다; 기록하다	пам'ятати; записувати
+167	A1	记得	jìde	remember (still recall)	기억하고 있다	пам'ятати
+168	A1	记住	jìzhù	memorize	확실히 기억해 두다	запам'ятати
+169	A1	家	jiā	home	집	дім, родина
+170	A1	家里	jiā li	home; in the house	집(안)	вдома
+171	A1	家人	jiārén	family members	가족	члени родини
+172	A1	间	jiān	(measure word for rooms)	칸(방을 세는 양사)	(лічильне слово для кімнат)
+173	A1	见	jiàn	see; meet	보다, 만나다	бачити, зустрічати
+174	A1	见面	jiàn/miàn	meet	만나다	зустрічатися
+175	A1	教	jiāo	teach	가르치다	навчати
+176	A1	叫(动)	jiào	call	부르다; (이름이) ~라고 하다	кликати; звати(ся)
+177	A1	教学楼	jiàoxuélóu	teaching building	강의동, 교사(校舍)	навчальний корпус
+178	A1	姐姐|姐	jiějie|jiě	older sister	누나, 언니	старша сестра
+179	A1	介绍	jièshào	introduce	소개하다	знайомити, представляти
+180	A1	今年	jīnnián	this year	올해	цього року
+181	A1	今天	jīntiān	today	오늘	сьогодні
+182	A1	进	jìn	enter	들어가다	входити
+183	A1	进来	jìn/·lái	come in	들어오다	заходити (сюди)
+184	A1	进去	jìn/·qù	go in	들어가다	заходити (туди)
+185	A1	九	jiǔ	nine	9, 아홉	дев'ять
+186	A1	就	jiù	then	곧, 바로	одразу, саме
+187	A1	觉得	juéde	feel	~라고 느끼다, 생각하다	відчувати, вважати
+188	A1	开	kāi	open; turn on; drive	열다; 켜다; 운전하다	відкривати; вмикати; керувати
+189	A1	开车	kāi/chē	drive	운전하다	водити машину
+190	A1	开会	kāi/huì	have a meeting	회의하다	проводити збори
+191	A1	开玩笑	kāi wánxiào	joke	농담하다	жартувати
+192	A1	看	kàn	look	보다	дивитися
+193	A1	看病	kàn//bìng	see a doctor	진찰받다; 진료하다	звертатися до лікаря
+194	A1	看到	kàndào	see (get to see)	보다, 보이다	побачити
+195	A1	看见	kàn/jiàn	see (catch sight of)	보다, 보이다	побачити
+196	A1	考	kǎo	test	시험을 보다	складати іспит
+197	A1	考试	kǎo//shì	exam	시험; 시험을 치다	іспит
+198	A1	渴	kě	thirsty	목마르다	спраглий
+199	A1	课	kè	class, lesson	수업, 과목	урок, заняття
+200	A1	课本	kèběn	textbook	교과서	підручник
+201	A1	课文	kèwén	text	본문	текст уроку
+202	A1	口	kǒu	mouth	입; 식구(양사)	рот; (лічильне для членів сім'ї)
+203	A1	块	kuài	piece, lump; yuan (spoken)	조각, 덩어리; 위안(화폐 단위)	шматок; юань
+204	A1	快	kuài	fast	빠르다	швидкий
+205	A1	来	lái	come	오다	приходити
+206	A1	来到	láidào	arrive at	~에 오다, 도착하다	прибувати до
+207	A1	老(形)	lǎo	old	늙다; 오래되다	старий
+208	A1	老人	lǎorén	elderly	노인	літня людина
+209	A1	老师	lǎoshī	teacher	선생님	вчитель
+210	A1	了	le	(particle: completed action; change)	~했다 (완료·변화 조사)	(частка завершеної дії)
+211	A1	累	lèi	tired	피곤하다, 지치다	втомлений
+212	A1	冷	lěng	cold	춥다, 차갑다	холодний
+213	A1	里	lǐ	in, inside (after nouns: 家里)	안, 속	всередині
+214	A1	里边	lǐbian	inside, the inner part	안쪽	всередині
+215	A1	两(数)	liǎng	two (before measure words: 两个)	2, 둘	два
+216	A1	零|O	líng|líng	zero	0, 영	нуль
+217	A1	六	liù	six	6, 여섯	шість
+218	A1	楼	lóu	building	건물; 층	будинок; поверх
+219	A1	楼上	lóu shang	upstairs	위층	нагорі
+220	A1	楼下	lóu xià	downstairs	아래층	внизу
+221	A1	路	lù	road	길	дорога
+222	A1	路口	lùkǒu	intersection	교차로, 길목	перехрестя
+223	A1	路上	lù shang	on the road	길에서, 도중에	в дорозі
+224	A1	妈妈|妈	māma|mā	mother/mom	엄마, 어머니	мама, мати
+225	A1	马路	mǎlù	street	큰길, 도로	вулиця, дорога
+226	A1	马上	mǎshàng	immediately	곧, 즉시	негайно, зараз
+227	A1	吗	ma	(particle for yes/no questions)	~까? (의문조사)	(питальна частка)
+228	A1	买	mǎi	buy	사다	купувати
+229	A1	慢	màn	slow	느리다	повільний
+230	A1	忙	máng	busy	바쁘다	зайнятий
+231	A1	毛(量)	máo	mao (0.1 yuan)	마오(0.1위안, 화폐 단위)	мао (0,1 юаня)
+232	A1	没	méi	not have	없다; ~하지 않았다	не мати; не (зробив)
+233	A1	没关系	méi guānxi	it's okay	괜찮아요	нічого страшного
+234	A1	没什么	méi shénme	nothing	별것 아니다, 괜찮다	нічого, пусте
+235	A1	没事儿	méi//shìr	it's nothing	괜찮다, 별일 없다	все гаразд
+236	A1	没有	méi·yǒu	don't have	없다; ~하지 않았다	не мати, немає
+237	A1	妹妹|妹	mèimei|mèi	younger sister	여동생	молодша сестра
+238	A1	门	mén	door	문	двері
+239	A1	门口	ménkǒu	doorway	입구, 문 앞	вхід, біля дверей
+240	A1	门票	ménpiào	admission ticket	입장권	вхідний квиток
+241	A1	们(朋友们)	men(péngyoumen)	(plural suffix for people: 我们)	~들 (복수 접미사)	(суфікс множини)
+242	A1	米饭	mǐfàn	rice	쌀밥	варений рис
+243	A1	面包	miànbāo	bread	빵	хліб
+244	A1	面条	miàntiáor	noodles	국수, 면	локшина
+245	A1	名字	míngzi	name	이름	ім'я
+246	A1	明白	míngbai	understand	이해하다; 분명하다	розуміти; ясний
+247	A1	明年	míngnián	next year	내년	наступного року
+248	A1	明天	míngtiān	tomorrow	내일	завтра
+249	A1	拿	ná	take	쥐다, 가지다, 들다	брати, тримати
+250	A1	哪	nǎ	which	어느	який, котрий
+251	A1	哪里	nǎ·lǐ	where (standard)	어디	де
+252	A1	哪儿	nǎr	where (spoken, northern)	어디	де
+253	A1	哪些	nǎxiē	which ones	어느 것들, 어떤	які
+254	A1	那(代)	nà	that	그, 저	той, це
+255	A1	那边	nàbiān	over there	그쪽, 저쪽	там, та сторона
+256	A1	那里	nà·lǐ	there (standard)	거기, 저기	там
+257	A1	那儿	nàr	there (spoken, northern)	거기, 저기	там
+258	A1	那些	nàxiē	those	그것들, 저것들	ті
+259	A1	奶	nǎi	milk (short form)	우유; 젖	молоко
+260	A1	奶奶	nǎinai	grandmother	할머니	бабуся
+261	A1	男	nán	male	남자, 남성	чоловічий, чоловік
+262	A1	男孩儿	nánháir	boy	남자아이	хлопчик
+263	A1	男朋友	nánpéngyou	boyfriend	남자친구	хлопець (коханий)
+264	A1	男人	nánrén	man	남자	чоловік
+265	A1	男生	nánshēng	male student	남학생	студент, учень
+266	A1	南	nán	south	남, 남쪽	південь
+267	A1	南边	nánbiān	south side	남쪽	південна сторона
+268	A1	难	nán	difficult	어렵다	важкий, складний
+269	A1	呢	ne	(particle: "and …?"; ongoing)	~는요? (의문·어기조사)	(питальна/модальна частка)
+270	A1	能	néng	can (be able to)	~할 수 있다	могти
+271	A1	你	nǐ	you	너, 당신	ти
+272	A1	你们	nǐmen	you (plural)	너희들, 여러분	ви (множина)
+273	A1	年	nián	year	해, 년	рік
+274	A1	您	nín	you (polite)	당신 (존칭)	Ви (ввічливо)
+275	A1	牛奶	niúnǎi	(cow's) milk	우유	молоко
+276	A1	女	nǚ	female	여자, 여성	жіночий, жінка
+277	A1	女儿	nǚ'ér	daughter	딸	донька
+278	A1	女孩儿	nǚháir	girl	여자아이	дівчинка
+279	A1	女朋友	nǚpéngyou	girlfriend	여자친구	дівчина (кохана)
+280	A1	女人	nǚrén	woman	여자	жінка
+281	A1	女生	nǚshēng	female student	여학생	студентка, учениця
+282	A1	旁边	pángbiān	beside	옆	поруч, збоку
+283	A1	跑	pǎo	run	달리다, 뛰다	бігти
+284	A1	朋友	péngyou	friend	친구	друг
+285	A1	票	piào	ticket (general)	표	квиток
+286	A1	七	qī	seven	7, 일곱	сім
+287	A1	起	qǐ	rise	일어나다	вставати
+288	A1	起床	qǐ//chuáng	get out of bed	(잠자리에서) 일어나다, 기상하다	вставати з ліжка
+289	A1	起来	qǐ//·lái	get up, rise, stand up	일어나다	вставати
+290	A1	汽车	qìchē	car	자동차	автомобіль
+291	A1	前	qián	front	앞, 전	перед
+292	A1	前边	qiánbiān	front side	앞쪽	попереду
+293	A1	前天	qiántiān	day before yesterday	그저께	позавчора
+294	A1	钱	qián	money	돈	гроші
+295	A1	钱包	qiánbāo	wallet	지갑	гаманець
+296	A1	请	qǐng	please	~해 주세요; 초대하다, 한턱내다	будь ласка; запрошувати
+297	A1	请假	qǐng//jià	ask for leave	휴가를 신청하다, 결석계를 내다	відпроситися
+298	A1	请进	qǐng jìn	please come in	들어오세요	заходьте, будь ласка
+299	A1	请问	qǐngwèn	may I ask	말씀 좀 여쭙겠습니다	дозвольте запитати
+300	A1	请坐	qǐng zuò	please sit	앉으세요	сідайте, будь ласка
+301	A1	球	qiú	ball	공	м'яч
+302	A1	去	qù	go	가다	іти
+303	A1	去年	qùnián	last year	작년	торік
+304	A1	热	rè	hot	덥다, 뜨겁다	гарячий, спекотний
+305	A1	人	rén	person	사람	людина
+306	A1	认识	rènshi	know (a person)	(사람을) 알다	знати, бути знайомим
+307	A1	认真	rènzhēn	serious	성실하다, 진지하다	старанний, серйозний
+308	A1	日	rì	day; date (written)	일, 날	день, число
+309	A1	日期	rìqī	date	날짜	дата
+310	A1	肉	ròu	meat	고기	м'ясо
+311	A1	三	sān	three	3, 셋	три
+312	A1	山	shān	mountain	산	гора
+313	A1	商场	shāngchǎng	mall	쇼핑몰, 백화점	торговий центр
+314	A1	商店	shāngdiàn	shop	상점, 가게	магазин
+315	A1	上	shàng	up	위; 오르다	верх; підніматися
+316	A1	上班	shàng//bān	go to work	출근하다	іти на роботу
+317	A1	上边	shàngbian	upper side	위쪽	верхня частина
+318	A1	上车	shàng chē	get on a vehicle	차에 타다	сісти в транспорт
+319	A1	上次	shàng cì	last time	지난번	минулого разу
+320	A1	上课	shàng//kè	attend class	수업하다, 수업을 듣다	мати урок
+321	A1	上网	shàng//wǎng	go online	인터넷을 하다	виходити в інтернет
+322	A1	上午	shàngwǔ	morning (before noon, a.m.)	오전	ранок, до полудня
+323	A1	上学	shàng//xué	go to school	등교하다; 학교에 다니다	іти до школи
+324	A1	少	shǎo	few	적다	мало
+325	A1	谁	shéi/shuí	who	누구	хто
+326	A1	身上	shēn shang	on the body	몸에, 몸	на тілі, при собі
+327	A1	身体	shēntǐ	body	몸, 건강	тіло, здоров'я
+328	A1	什么	shénme	what	무엇, 무슨	що
+329	A1	生病	shēng//bìng	get sick	병이 나다	захворіти
+330	A1	生气	shēng//qì	angry	화내다	сердитися
+331	A1	生日	shēngrì	birthday	생일	день народження
+332	A1	十	shí	ten	10, 열	десять
+333	A1	时候	shíhou	time, moment (when …)	때, 무렵	час, коли
+334	A1	时间	shíjiān	time (duration)	시간	час
+335	A1	事	shì	matter	일, 사건	справа
+336	A1	试	shì	try	시험 삼아 해 보다	пробувати
+337	A1	是	shì	be	~이다	бути, є
+338	A1	是不是	shì bu shì	is or isn't	~인지 아닌지, ~아니야?	чи так, чи ні
+339	A1	手	shǒu	hand	손	рука
+340	A1	手机	shǒujī	mobile phone	휴대폰	мобільний телефон
+341	A1	书	shū	book	책	книга
+342	A1	书包	shūbāo	schoolbag	책가방	шкільний рюкзак
+343	A1	书店	shūdiàn	bookstore	서점	книгарня
+344	A1	树	shù	tree	나무	дерево
+345	A1	水	shuǐ	water	물	вода
+346	A1	水果	shuǐguǒ	fruit	과일	фрукти
+347	A1	睡	shuì	sleep	자다	спати
+348	A1	睡觉	shuì//jiào	go to bed, sleep	잠자다	спати
+349	A1	说	shuō	speak	말하다	говорити
+350	A1	说话	shuō//huà	talk	이야기하다, 말하다	розмовляти
+351	A1	四	sì	four	4, 넷	чотири
+352	A1	送	sòng	send	보내다, 선물하다; 배웅하다	дарувати, надсилати; проводжати
+353	A1	岁	suì	year (age)	살, 세	рік (вік)
+354	A1	他	tā	he	그, 그 남자	він
+355	A1	他们	tāmen	they (male)	그들	вони
+356	A1	她	tā	she	그녀	вона
+357	A1	她们	tāmen	they (female)	그녀들	вони (жінки)
+358	A1	太	tài	too	너무	занадто
+359	A1	天	tiān	day; sky	날, 일; 하늘	день; небо
+360	A1	天气	tiānqì	weather	날씨	погода
+361	A1	听	tīng	listen	듣다	слухати
+362	A1	听到	tīngdào	hear (get to hear)	듣다, 들리다	почути
+363	A1	听见	tīng//jiàn	hear (catch the sound)	들리다	почути
+364	A1	听写	tīngxiě	dictation	받아쓰기	диктант
+365	A1	同学	tóngxué	classmate	학우, 반 친구	однокласник
+366	A1	图书馆	túshūguǎn	library	도서관	бібліотека
+367	A1	外	wài	outside (short form)	밖	зовні
+368	A1	外边	wàibiān	outside, outdoors	바깥쪽	надворі, зовні
+369	A1	外国	wàiguó	foreign country	외국	іноземна країна
+370	A1	外语	wàiyǔ	foreign language	외국어	іноземна мова
+371	A1	玩儿	wánr	play	놀다	гратися, розважатися
+372	A1	晚	wǎn	late	늦다	пізній
+373	A1	晚饭	wǎnfàn	dinner	저녁밥	вечеря
+374	A1	晚上	wǎnshang	evening	저녁, 밤	вечір
+375	A1	网上	wǎng shang	online	인터넷(상), 온라인	в інтернеті
+376	A1	网友	wǎngyǒu	online friend	인터넷 친구	інтернет-друг
+377	A1	忘	wàng	forget (short form)	잊다	забувати
+378	A1	忘记	wàngjì	forget	잊어버리다	забувати
+379	A1	问	wèn	ask	묻다	питати
+380	A1	我	wǒ	I/me	나, 저	я
+381	A1	我们	wǒmen	we/us	우리	ми
+382	A1	五	wǔ	five	5, 다섯	п'ять
+383	A1	午饭	wǔfàn	lunch	점심밥	обід
+384	A1	西	xī	west	서, 서쪽	захід
+385	A1	西边	xībiān	west side	서쪽	західна сторона
+386	A1	洗	xǐ	wash	씻다, 빨다	мити, прати
+387	A1	洗手间	xǐshǒujiān	restroom	화장실	туалет
+388	A1	喜欢	xǐhuan	like	좋아하다	подобатися
+389	A1	下(名、动)	xià	down	아래; 내리다	низ; спускатися
+390	A1	下班	xià//bān	get off work	퇴근하다	закінчити роботу
+391	A1	下边	xiàbian	lower side	아래쪽	нижня частина
+392	A1	下车	xià chē	get off a vehicle	차에서 내리다	вийти з транспорту
+393	A1	下次	xià cì	next time	다음 번	наступного разу
+394	A1	下课	xià//kè	class is over	수업이 끝나다	закінчити урок
+395	A1	下午	xiàwǔ	afternoon	오후	після обіду, пополудні
+396	A1	下雨	xià yǔ	to rain	비가 오다	іде дощ
+397	A1	先	xiān	first	먼저	спочатку
+398	A1	先生	xiānsheng	Mr.	~씨, 선생; 남편	пан; чоловік (у шлюбі)
+399	A1	现在	xiànzài	now	지금, 현재	зараз
+400	A1	想	xiǎng	think	생각하다; ~하고 싶다; 그리워하다	думати; хотіти; сумувати
+401	A1	小	xiǎo	small	작다	маленький
+402	A1	小孩儿	xiǎoháir	little kid (colloquial)	어린아이	дитина
+403	A1	小姐	xiǎojiě	Miss	아가씨, ~양	пані, панночка
+404	A1	小朋友	xiǎopéngyou	little friend	어린이, 꼬마	дитина, малюк
+405	A1	小时	xiǎoshí	hour	시간(60분)	година
+406	A1	小学	xiǎoxué	primary school	초등학교	початкова школа
+407	A1	小学生	xiǎoxuéshēng	elementary student	초등학생	молодший школяр
+408	A1	笑	xiào	laugh	웃다	сміятися
+409	A1	写	xiě	write	쓰다	писати
+410	A1	谢谢	xièxie	thank you	감사합니다	дякую
+411	A1	新	xīn	new	새롭다	новий
+412	A1	新年	xīnnián	New Year	새해, 신년	Новий рік
+413	A1	星期	xīngqī	week	주, 요일	тиждень
+414	A1	星期日	xīngqīrì	Sunday (formal)	일요일	неділя
+415	A1	星期天	xīngqītiān	Sunday (spoken)	일요일	неділя
+416	A1	行	xíng	okay	좋다, 괜찮다, 된다	гаразд, можна
+417	A1	休息	xiūxi	rest	쉬다, 휴식하다	відпочивати
+418	A1	学	xué	learn	배우다	вчити, вчитися
+419	A1	学生	xué·shēng	student	학생	учень, студент
+420	A1	学习	xuéxí	study, learn	공부하다, 학습하다	навчатися
+421	A1	学校	xuéxiào	school	학교	школа
+422	A1	学院	xuéyuàn	college	단과대학, 학원	інститут, коледж
+423	A1	要(动)	yào	want	원하다; ~하려고 하다; ~해야 한다	хотіти; збиратися; треба
+424	A1	爷爷	yéye	grandfather	할아버지	дідусь
+425	A1	也	yě	also	~도, 역시	теж, також
+426	A1	页	yè	page	쪽, 페이지	сторінка
+427	A1	一	yī	one	1, 하나	один
+428	A1	衣服	yīfu	clothes	옷	одяг
+429	A1	医生	yīshēng	doctor	의사	лікар
+430	A1	医院	yīyuàn	hospital	병원	лікарня
+431	A1	一半	yībàn	one half, half of it	절반	половина
+432	A1	一会儿	yīhuìr	a while	잠시, 잠깐	хвилинку, трохи часу
+433	A1	一块儿	yīkuàir	together (colloquial)	함께	разом
+434	A1	一下儿	yīxiàr	(do) briefly, once	좀 ~해 보다, 한번	трохи, раз (зробити)
+435	A1	一样	yīyàng	same	같다	однаковий
+436	A1	一边	yībiān	one side	한쪽; ~하면서	один бік; водночас
+437	A1	一点儿	yīdiǎnr	a little, a bit	조금, 약간	трохи
+438	A1	一起	yīqǐ	together	함께, 같이	разом
+439	A1	一些	yīxiē	some, a few	약간, 몇몇	деякі, трохи
+440	A1	用	yòng	use	쓰다, 사용하다	використовувати
+441	A1	有	yǒu	have	있다, 가지고 있다	мати, є
+442	A1	有的	yǒude	some (of them)	어떤 (것/사람)	деякі
+443	A1	有名	yǒumíng	famous	유명하다	відомий
+444	A1	有时候|有时	yǒushíhou|yǒushí	sometimes	가끔, 때로는	іноді
+445	A1	有一些	yǒu(yī)xiē	have some	약간 있다; 조금	є трохи; трохи
+446	A1	有用	yǒuyòng	useful	쓸모 있다, 유용하다	корисний
+447	A1	右	yòu	right	오른쪽	право, праворуч
+448	A1	右边	yòubiān	right side	오른쪽	права сторона
+449	A1	雨	yǔ	rain (noun)	비	дощ
+450	A1	元	yuán	yuan (currency)	위안(화폐 단위)	юань
+451	A1	远	yuǎn	far	멀다	далекий
+452	A1	月	yuè	month	월, 달	місяць
+453	A1	再	zài	again	다시, 또	знову
+454	A1	再见	zàijiàn	goodbye	안녕히 가세요, 또 만나요	до побачення
+455	A1	在	zài	at	~에 있다; ~에서	бути (десь); в, на
+456	A1	在家	zàijiā	be at home	집에 있다	бути вдома
+457	A1	早	zǎo	early	이르다, 일찍	ранній, рано
+458	A1	早饭	zǎofàn	breakfast	아침밥	сніданок
+459	A1	早上	zǎoshang	early morning	아침	ранок
+460	A1	怎么	zěnme	how	어떻게; 왜	як; чому
+461	A1	站(名)	zhàn	stop, station	역, 정류장	станція, зупинка
+462	A1	找	zhǎo	look for	찾다	шукати
+463	A1	找到	zhǎodào	find	찾아내다	знайти
+464	A1	这	zhè	this	이, 이것	це, цей
+465	A1	这边	zhèbiān	this side	이쪽	ця сторона
+466	A1	这里	zhè·lǐ	here (standard)	여기	тут
+467	A1	这儿	zhèr	here (spoken, northern)	여기	тут
+468	A1	这些	zhèxiē	these	이것들	ці
+469	A1	着	zhe	(particle: ongoing state, "-ing")	~하고 있다 (지속 조사)	(частка тривалої дії)
+470	A1	真	zhēn	really, truly	정말, 참으로	справді
+471	A1	真的	zhēn de	really?; real, true	정말로, 진짜	справді, насправді
+472	A1	正(副)	zhèng	just	마침, 한창 ~하는 중	якраз
+473	A1	正在	zhèngzài	in the process of	~하고 있는 중이다	саме зараз (робити)
+474	A1	知道	zhī·dào	know (a fact)	알다	знати
+475	A1	知识	zhīshi	knowledge	지식	знання
+476	A1	中	zhōng	middle; in, within	가운데, 중	середина
+477	A1	中国	Zhōngguó	China	중국	Китай
+478	A1	中间	zhōngjiān	middle; between	중간, 사이	середина, між
+479	A1	中文	Zhōngwén	Chinese (language, esp. written)	중국어	китайська мова
+480	A1	中午	zhōngwǔ	noon	정오, 점심때	полудень
+481	A1	中学	zhōngxué	middle school	중·고등학교	середня школа
+482	A1	中学生	zhōngxuéshēng	middle school student	중고등학생	старшокласник, школяр
+483	A1	重	zhòng	heavy	무겁다	важкий
+484	A1	重要	zhòngyào	important	중요하다	важливий
+485	A1	住	zhù	live	살다, 묵다	жити, мешкати
+486	A1	准备	zhǔnbèi	prepare	준비하다	готувати(ся)
+487	A1	桌子	zhuōzi	table	탁자, 책상	стіл
+488	A1	字	zì	character	글자	ієрогліф, літера
+489	A1	子(桌子)	zi(zhuōzi)	(noun suffix: 桌子)	(명사 접미사)	(суфікс іменника)
+490	A1	走	zǒu	walk; leave	걷다; 떠나다	іти, ходити; йти геть
+491	A1	走路	zǒu//lù	walk, go on foot	길을 걷다	іти пішки
+492	A1	最	zuì	most	가장, 제일	най-, найбільш
+493	A1	最好	zuìhǎo	best	가장 좋다; ~하는 게 제일 좋다	найкращий; краще б
+494	A1	最后	zuìhòu	last	최후, 마지막	останній, наостанок
+495	A1	昨天	zuótiān	yesterday	어제	вчора
+496	A1	左	zuǒ	left	왼쪽	ліво, ліворуч
+497	A1	左边	zuǒbiān	left side	왼쪽	ліва сторона
+498	A1	坐	zuò	sit	앉다; (교통수단을) 타다	сидіти; їхати (транспортом)
+499	A1	坐下	zuò//xià	sit down	앉다	сісти
+500	A1	做	zuò	do; make	하다, 만들다	робити

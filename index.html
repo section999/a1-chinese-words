@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A1 中文 500</title>
+  <meta name="description" content="A1 Chinese, 500 words: word list, flashcards with spaced repetition, quiz, and stroke-order writing practice.">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash.
+    try {
+      var t = JSON.parse(localStorage.getItem('a1zh:theme'));
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Non-blocking: text shows at once in a system font; Noto Sans KR is added by i18n.js for Korean only. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <p class="site-title"><a class="site-title-link" href="#home">A1 中文 500</a><span class="cursor" aria-hidden="true">_</span></p>
+      </div>
+      <div class="header-controls">
+        <a class="btn btn-icon donate-link" href="https://www.freecodecamp.org/donate" target="_blank" rel="noopener"
+           data-i18n-aria-label="donateLink" data-i18n-title="donateLink" aria-label="Donate to freeCodeCamp (new tab)"
+           title="Donate to freeCodeCamp (new tab)"><span aria-hidden="true">❤️</span></a>
+        <button type="button" class="btn btn-icon" id="theme-toggle"></button>
+        <button type="button" class="btn btn-icon menu-toggle" id="menu-toggle" aria-controls="site-menu" aria-expanded="false"
+                aria-label="Open menu">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+
+      <div class="site-menu" id="site-menu" hidden>
+        <nav class="menu-nav" data-i18n-aria-label="sections" aria-label="Sections">
+          <a class="menu-link" href="#home" data-view="home" data-i18n="menuHome">Home</a>
+          <a class="menu-link" href="#list" data-view="list" data-i18n="tabList">Word list</a>
+          <a class="menu-link" href="#cards" data-view="cards" data-i18n="tabCards">Flashcards</a>
+          <a class="menu-link" href="#quiz" data-view="quiz" data-i18n="tabQuiz">Quiz</a>
+          <a class="menu-link" href="#write" data-view="write" data-i18n="tabWrite">Writing</a>
+          <a class="menu-link" href="#favorites" data-view="favorites" data-i18n="tabFavorites">Favorites</a>
+        </nav>
+        <!-- Folded by default; app.js folds them again whenever the menu closes. -->
+        <details class="menu-group">
+          <summary class="menu-summary">
+            <span id="menu-lang-label" data-i18n="language">Language</span>
+            <span class="menu-summary-value" id="menu-lang-current" lang="en">English</span>
+          </summary>
+          <div class="menu-group-body">
+            <div class="menu-langs" role="group" aria-labelledby="menu-lang-label">
+              <button type="button" class="btn" data-lang="en" aria-pressed="true" lang="en">English</button>
+              <button type="button" class="btn" data-lang="uk" aria-pressed="false" lang="uk">Українська</button>
+              <button type="button" class="btn" data-lang="ko" aria-pressed="false" lang="ko">한국어</button>
+            </div>
+            <p class="menu-note" data-i18n="languageNote">Changes the interface and the word meanings.</p>
+          </div>
+        </details>
+
+        <details class="menu-group">
+          <summary class="menu-summary">
+            <span id="menu-progress-label" data-i18n="menuProgress">Progress</span>
+          </summary>
+          <div class="menu-group-body">
+            <div class="menu-actions" role="group" aria-labelledby="menu-progress-label">
+              <button type="button" class="btn" id="export-backup" data-i18n="exportProgress">Export progress</button>
+              <button type="button" class="btn" id="import-backup" data-i18n="importProgress">Import progress</button>
+            </div>
+            <p class="backup-message" role="alert" hidden></p>
+            <p class="menu-note" data-i18n="progressNote"></p>
+          </div>
+        </details>
+        <!-- Outside the <details> so the home page's import link can open the file picker. -->
+        <input type="file" id="import-file" accept=".json,application/json" hidden>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="tabs" role="tablist" data-i18n-aria-label="sections" aria-label="Sections">
+      <button type="button" class="tab" role="tab" id="tab-list" aria-controls="panel-list" data-tab="list">
+        <span class="tab-index" aria-hidden="true">1:</span><span data-i18n="tabList">Word list</span>
+      </button>
+      <button type="button" class="tab" role="tab" id="tab-cards" aria-controls="panel-cards" data-tab="cards">
+        <span class="tab-index" aria-hidden="true">2:</span><span data-i18n="tabCards">Flashcards</span>
+      </button>
+      <button type="button" class="tab" role="tab" id="tab-quiz" aria-controls="panel-quiz" data-tab="quiz">
+        <span class="tab-index" aria-hidden="true">3:</span><span data-i18n="tabQuiz">Quiz</span>
+      </button>
+      <button type="button" class="tab" role="tab" id="tab-write" aria-controls="panel-write" data-tab="write">
+        <span class="tab-index" aria-hidden="true">4:</span><span data-i18n="tabWrite">Writing</span>
+      </button>
+      <button type="button" class="tab" role="tab" id="tab-favorites" aria-controls="panel-favorites" data-tab="favorites">
+        <span class="tab-index" aria-hidden="true">5:</span><span data-i18n="tabFavorites">Favorites</span>
+      </button>
+    </nav>
+
+    <main id="main" tabindex="-1">
+      <!-- Home (front page) -->
+      <section class="home" id="panel-home" aria-labelledby="home-title" hidden>
+        <h1 class="home-title" id="home-title">A1 中文 500</h1>
+
+        <div class="home-card">
+          <div class="home-actions" id="home-actions"></div>
+          <div id="home-progress"></div>
+
+          <p class="home-modes">
+            <span class="home-modes-label" data-i18n="homeModes">Jump to</span>
+            <a href="#cards" data-i18n="tabCards">Flashcards</a>
+            <a href="#quiz" data-i18n="tabQuiz">Quiz</a>
+            <a href="#write" data-i18n="tabWrite">Writing</a>
+          </p>
+
+          <p class="home-import">
+            <span data-i18n="homeImportPrompt">Studied on another device?</span>
+            <button type="button" class="link-button" id="home-import" data-i18n="importProgress">Import progress</button>
+          </p>
+          <p class="backup-message" role="alert" hidden></p>
+
+          <details class="home-howto">
+            <summary data-i18n="homeHowTo">How it works</summary>
+            <ul>
+              <li data-i18n="howTo1">Press "I know" on a flashcard to add the word to your review schedule.</li>
+              <li data-i18n="howTo2">Reviews come back after 1 → 2 → 4 → 7 → 14 days. "I don't know" starts the word over.</li>
+              <li data-i18n="howTo3">Quiz: look at the hanzi and pick its meaning from 4 options.</li>
+              <li data-i18n="howTo4">Writing: watch the stroke order, trace it, then write from memory.</li>
+              <li data-i18n="howTo5">Progress is saved in this browser only. Use "Export progress" to move it to another device.</li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+      <!-- Word list -->
+      <section class="panel" id="panel-list" role="tabpanel" aria-labelledby="tab-list">
+        <h1 class="panel-title visually-hidden"><span data-i18n="tabList">Word list</span></h1>
+
+        <div class="toolbar list-toolbar">
+          <div>
+            <label class="field-label" for="search" data-i18n="search">Search</label>
+            <input class="input" type="search" id="search" autocomplete="off" spellcheck="false"
+                   data-i18n-placeholder="searchPlaceholder">
+          </div>
+          <div>
+            <span class="field-label" id="filter-label" data-i18n="show">Show</span>
+            <div class="segmented seg-grid" role="group" aria-labelledby="filter-label" id="list-filter">
+              <button type="button" class="btn" data-filter="all" data-i18n="filterAll">All</button>
+              <button type="button" class="btn" data-filter="learned" data-i18n="filterLearned">Learned</button>
+              <button type="button" class="btn" data-filter="unlearned" data-i18n="filterUnlearned">Not yet</button>
+            </div>
+          </div>
+          <div>
+            <span class="field-label" id="list-order-label" data-i18n="order">Order</span>
+            <div class="segmented" role="group" aria-labelledby="list-order-label" id="list-order">
+              <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
+              <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-meta">
+          <!-- Not shown; still announces the number of search results to screen readers. -->
+          <p class="result-count visually-hidden" id="result-count" aria-live="polite"></p>
+          <p class="list-progress" id="status-line" role="status">
+            <span id="status-text"></span>
+            <span class="status-bar" id="status-bar" aria-hidden="true"></span>
+          </p>
+        </div>
+        <ul class="word-list" id="word-list"></ul>
+        <p class="empty-state" id="list-empty" hidden data-i18n="noResults">No matching words.</p>
+
+        <div class="danger-zone">
+          <button type="button" class="btn btn-bad" id="reset-progress" data-i18n="resetProgress">Reset progress</button>
+        </div>
+      </section>
+
+      <!-- Flashcards -->
+      <section class="panel" id="panel-cards" role="tabpanel" aria-labelledby="tab-cards" hidden>
+        <h1 class="panel-title visually-hidden"><span data-i18n="tabCards">Flashcards</span></h1>
+
+        <div class="toolbar">
+          <div>
+            <span class="field-label" id="deck-label" data-i18n="show">Show</span>
+            <div class="segmented seg-grid" role="group" aria-labelledby="deck-label" id="deck-mode">
+              <button type="button" class="btn" data-deck="all" data-i18n="filterAll">All</button>
+              <button type="button" class="btn" data-deck="learned" data-i18n="filterLearned">Learned</button>
+              <button type="button" class="btn" data-deck="unlearned" data-i18n="filterUnlearned">Not yet</button>
+              <button type="button" class="btn" data-deck="review">Due</button>
+            </div>
+          </div>
+          <div>
+            <span class="field-label" id="order-label" data-i18n="order">Order</span>
+            <div class="segmented" role="group" aria-labelledby="order-label" id="deck-order">
+              <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
+              <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="card-area"></div>
+        <p class="visually-hidden" id="card-live" aria-live="polite"></p>
+        <p class="hint" id="card-hint"></p>
+      </section>
+
+      <!-- Quiz -->
+      <section class="panel" id="panel-quiz" role="tabpanel" aria-labelledby="tab-quiz" hidden>
+        <h1 class="panel-title visually-hidden"><span data-i18n="tabQuiz">Quiz</span></h1>
+        <div id="quiz-area"></div>
+        <p class="visually-hidden" id="quiz-live" aria-live="polite"></p>
+      </section>
+
+      <!-- Writing (stroke order) -->
+      <section class="panel" id="panel-write" role="tabpanel" aria-labelledby="tab-write" hidden>
+        <h1 class="panel-title visually-hidden"><span data-i18n="tabWrite">Writing</span></h1>
+
+        <div class="toolbar">
+          <div>
+            <span class="field-label" id="write-mode-label" data-i18n="writeMode">Mode</span>
+            <div class="segmented" role="group" aria-labelledby="write-mode-label" id="write-mode">
+              <button type="button" class="btn" data-write-mode="view" data-i18n="modeView">Watch</button>
+              <button type="button" class="btn" data-write-mode="trace" data-i18n="modeTrace">Trace</button>
+              <button type="button" class="btn" data-write-mode="test" data-i18n="modeTest">From memory</button>
+            </div>
+          </div>
+          <div>
+            <span class="field-label" id="write-order-label" data-i18n="order">Order</span>
+            <div class="segmented" role="group" aria-labelledby="write-order-label" id="write-order">
+              <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
+              <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="deck-progress" id="write-position"></p>
+        <div id="write-area"></div>
+        <p class="hint" id="write-hint"></p>
+      </section>
+
+      <!-- Favorites -->
+      <section class="panel" id="panel-favorites" role="tabpanel" aria-labelledby="tab-favorites" hidden>
+        <h1 class="panel-title visually-hidden"><span data-i18n="tabFavorites">Favorites</span></h1>
+        <div id="favorites-area"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="data/vocabulary.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/srs.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/list.js"></script>
+  <script src="js/flashcards.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/writing.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/favorites-view.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
