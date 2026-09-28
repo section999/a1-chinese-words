@@ -717,8 +717,10 @@ main {
 }
 
 .word-row {
+  --hanzi-size: 64px;
   display: grid;
-  grid-template-columns: 4ch minmax(96px, auto) 1fr auto;
+  /* Fixed hanzi column (3 characters) so pinyin and meaning start on the same line in every row */
+  grid-template-columns: 4ch calc(var(--hanzi-size) * 3) 1fr auto;
   align-items: center;
   gap: 8px 24px;
   padding: 16px 8px;
@@ -736,7 +738,8 @@ main {
 }
 
 .word-row > .hanzi {
-  font-size: 64px;
+  font-size: var(--hanzi-size);
+  text-wrap: balance; /* longer words wrap inside the column: 4 characters → 2 + 2 */
 }
 
 .word-info {
@@ -1557,7 +1560,7 @@ code {
 
 @media (max-width: 720px) {
   .word-row {
-    grid-template-columns: minmax(72px, auto) 1fr;
+    grid-template-columns: calc(var(--hanzi-size) * 2) 1fr; /* 2 characters on phones */
     grid-template-areas:
       "hanzi info"
       "hanzi actions";
@@ -1616,8 +1619,8 @@ code {
 }
 
 @media (max-width: 480px) {
-  .word-row > .hanzi {
-    font-size: 48px;
+  .word-row {
+    --hanzi-size: 48px;
   }
 
   .word-row .pinyin {
@@ -1758,8 +1761,8 @@ code {
     margin-bottom: 6px;
   }
 
-  .word-row > .hanzi {
-    font-size: 40px;
+  .word-row {
+    --hanzi-size: 40px;
   }
 
   /* Long mode names (Ukrainian) fit three across on the narrowest phones */
