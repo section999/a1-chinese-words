@@ -52,9 +52,11 @@
     if (!backup || backup.app !== APP_ID || typeof backup.version !== 'number' || backup.version > VERSION) return null;
     var data = backup.data;
     if (!data || typeof data !== 'object' || Array.isArray(data)) return null;
+    // An empty backup (e.g. exported where storage was unavailable) would only wipe progress here.
+    if (!Object.keys(data).length) return null;
     // Every value the app reads at startup must have the right shape.
     var arrays = ['learned', 'favorites'];
-    var objects = ['srs', 'writing'];
+    var objects = ['writing'];
     if (arrays.some(function (k) { return data[k] !== undefined && !Array.isArray(data[k]); })) return null;
     if (objects.some(function (k) { return data[k] !== undefined && !App.util.isPlainObject(data[k]); })) return null;
     return backup;

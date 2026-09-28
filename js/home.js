@@ -1,4 +1,4 @@
-/* Home (front page): one call to action that follows the learner's state, progress, shortcuts. */
+/* Home (front page): the "Start learning" button, progress summary, shortcuts. */
 (function (App) {
   'use strict';
 
@@ -7,30 +7,12 @@
 
   var el = {};
 
-  /** What the big button does right now: open a flashcard deck, or (href) go to another view. */
-  function primary() {
-    var due = App.srs.dueCount();
-    var learned = App.progress.count();
-    if (due) return { label: t('homeReview', { n: due }), deck: 'review' };
-    // New words: the word list, showing only the words not learned yet.
-    if (!learned) return { label: t('homeStart'), href: '#list', filter: 'unlearned' };
-    if (learned < App.words.length) return { label: t('homeLearnNew'), href: '#list', filter: 'unlearned' };
-    return { label: t('homePracticeAll'), deck: 'all' };
-  }
-
+  /** Always "Start learning": the word list, showing only the words not learned yet. */
   function actionsHtml() {
-    var p = primary();
-    return p.href
-      ? '<a class="btn btn-primary btn-large" href="' + p.href + '" data-home-filter="' + p.filter + '">' +
-        esc(p.label) + ' →</a>'
-      : '<button type="button" class="btn btn-primary btn-large" data-home-deck="' + p.deck + '">' +
-        esc(p.label) + ' →</button>';
-  }
-
-  /** "Next review: Sep 29 · words due: 3", so learners know when to come back. */
-  function nextReviewHtml() {
-    var next = App.srs.upcoming();
-    return next ? '<p class="muted">' + esc(t('reviewNext', { date: App.srs.formatDate(next.date), n: next.count })) + '</p>' : '';
+    return (
+      '<a class="btn btn-primary btn-large" href="#list" data-home-filter="unlearned">' +
+      esc(t('homeStart')) + ' →</a>'
+    );
   }
 
   /** Only for returning learners; a first visit stays short. */
@@ -48,7 +30,6 @@
       '<p>' + esc(t('statusLearned', { n: n, total: total, pct: pct })) + '</p>' +
       '<p class="home-bar" aria-hidden="true">[' + '#'.repeat(filled) + '-'.repeat(cells - filled) + ']</p>' +
       (written ? '<p class="muted">' + esc(t('homeWritten', { n: written })) + '</p>' : '') +
-      nextReviewHtml() +
       '</div>'
     );
   }
@@ -59,7 +40,7 @@
     el.progress.innerHTML = progressHtml();
   }
 
-  /** Called by app.js whenever the home page becomes visible (the due count may have changed). */
+  /** Called by app.js whenever the home page becomes visible (progress may have changed elsewhere). */
   function show() {
     render();
   }
@@ -71,15 +52,11 @@
 
     el.actions.addEventListener('click', function (e) {
       var link = e.target.closest('[data-home-filter]');
-      if (link) return App.list.setFilter(link.getAttribute('data-home-filter')); // the link then navigates
-      var b = e.target.closest('[data-home-deck]');
-      if (!b) return;
-      App.cards.setMode(b.getAttribute('data-home-deck'));
-      location.hash = 'cards';
+      if (link) App.list.setFilter(link.getAttribute('data-home-filter')); // the link then navigates
     });
     document.getElementById('home-import').addEventListener('click', App.backup.pick);
 
-    ['lang', 'progress', 'srs', 'writing'].forEach(function (ev) {
+    ['lang', 'progress', 'writing'].forEach(function (ev) {
       App.on(ev, render);
     });
   }

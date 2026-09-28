@@ -78,11 +78,14 @@
       var b = e.target.closest('[data-tab]');
       if (!b) return;
       var name = b.getAttribute('data-tab');
-      if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
-      showTab(name);
+      // A history entry per tab click (like the menu links), so Back returns to the previous view.
+      // hashchange then shows the tab.
+      if (location.hash !== '#' + name) location.hash = name;
+      else showTab(name);
     });
 
-    // Arrow keys move between tabs (WAI-ARIA tabs pattern).
+    // Arrow keys move between tabs (WAI-ARIA tabs pattern). They replace the history entry so
+    // stepping through the tabs doesn't pile up entries.
     tablist.addEventListener('keydown', function (e) {
       if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
       var i = TABS.indexOf(activeTab);
@@ -152,6 +155,11 @@
 
     btn.addEventListener('click', function () {
       setOpen(menu.hidden);
+    });
+    // Tabbing out of the menu (to anything but its own button) closes it.
+    menu.addEventListener('focusout', function (e) {
+      var to = e.relatedTarget;
+      if (!menu.hidden && to && !menu.contains(to) && to !== btn) setOpen(false);
     });
     // Navigating closes the menu; picking a language keeps it open so the change is visible.
     menu.addEventListener('click', function (e) {
@@ -226,6 +234,8 @@
   function initKeys() {
     document.addEventListener('keydown', function (e) {
       if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey || App.util.isTyping(e)) return;
+      // Keys pressed inside the open header menu belong to the menu, not the card or word behind it.
+      if (e.target.closest && e.target.closest('#site-menu, #menu-toggle')) return;
       var handled = false;
       if (activeTab === 'cards') handled = App.cards.handleKey(e);
       else if (activeTab === 'quiz') handled = App.quiz.handleKey(e);
@@ -255,7 +265,6 @@
     initMenu();
     initTabs(); // last: showing a view needs every module ready
     App.on('progress', renderStatus);
-    App.on('srs', renderStatus);
     renderStatus();
   }
 

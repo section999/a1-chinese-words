@@ -85,6 +85,16 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Korean breaks lines between words (외운 단어, not 외운 단/어); Chinese keeps per-character breaks. */
+:root[lang="ko"] body {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+:root[lang="ko"] [lang^="zh"] {
+  word-break: normal;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -1061,16 +1071,24 @@ main {
 }
 
 .review-list li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 16px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 16px;
   padding: 12px 0;
   border-bottom: 1px solid var(--bg-3);
 }
 
 .review-list .hanzi {
+  grid-row: 1 / span 3;
+  grid-column: 1;
   font-size: 2.5rem;
+}
+
+/* pinyin (+ alternate reading) and meaning stack in the middle column */
+.review-list .speak-btn {
+  grid-row: 1 / span 3;
+  grid-column: 3;
 }
 
 /* ==========================================================================
@@ -1092,15 +1110,6 @@ main {
 
 .favorites-head .result-count {
   margin: 0;
-}
-
-.write-badge {
-  padding: 0 8px;
-  border: 2px solid var(--green);
-  color: var(--green);
-  font-family: var(--font-mono);
-  line-height: 1.5;
-  white-space: nowrap;
 }
 
 /* Writing: toolbar, word card and hint are all centered. */
@@ -1435,6 +1444,7 @@ code {
 .home-modes {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 8px 16px;
   margin: 24px 0 0;
@@ -1629,9 +1639,9 @@ code {
     margin-left: 0;
   }
 
-  /* Four decks on one row so the answer buttons stay above the fold */
+  /* All decks on one row so the answer buttons stay above the fold */
   #deck-mode {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   #deck-mode .btn {
@@ -1684,6 +1694,20 @@ code {
 }
 
 @media (max-width: 360px) {
+  .card-arrow {
+    display: none;
+  }
+
+  .card-controls .btn {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+
+  /* 0.9rem = 16.2px: small enough for the Ukrainian placeholder, big enough that iOS doesn't zoom */
+  #search {
+    font-size: 0.9rem;
+  }
+
   .card-controls {
     margin-top: 10px;
   }

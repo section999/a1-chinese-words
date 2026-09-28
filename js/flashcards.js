@@ -5,7 +5,7 @@
   var t = App.i18n.t;
   var esc = App.util.escapeHtml;
 
-  var MODES = ['review', 'all', 'learned', 'unlearned', 'favorites'];
+  var MODES = ['all', 'learned', 'unlearned', 'favorites'];
 
   var state = {
     mode: App.storage.get('deckMode', 'unlearned'),
@@ -18,26 +18,22 @@
   };
 
   if (MODES.indexOf(state.mode) === -1) state.mode = 'unlearned';
+  if (state.order !== 'shuffle') state.order = 'number';
 
   var el = {};
-  var answering = false; // our own progress/srs changes must not trigger a rebuild
+  var answering = false; // our own progress changes must not trigger a rebuild
 
   function build(ids) {
-    if (!ids && state.mode === 'review') {
-      // Already ordered most-overdue first; keep that unless shuffling.
-      ids = App.srs.dueIds();
-    } else {
-      if (!ids) {
-        ids = App.words
-          .filter(function (w) {
-            if (state.mode === 'favorites') return App.favorites.has(w.id);
-            if (state.mode === 'learned') return App.progress.has(w.id);
-            return state.mode === 'all' || !App.progress.has(w.id);
-          })
-          .map(function (w) { return w.id; });
-      }
-      ids = ids.slice().sort(function (a, b) { return a - b; });
+    if (!ids) {
+      ids = App.words
+        .filter(function (w) {
+          if (state.mode === 'favorites') return App.favorites.has(w.id);
+          if (state.mode === 'learned') return App.progress.has(w.id);
+          return state.mode === 'all' || !App.progress.has(w.id);
+        })
+        .map(function (w) { return w.id; });
     }
+    ids = ids.slice().sort(function (a, b) { return a - b; });
     state.deck = state.order === 'shuffle' ? App.util.shuffle(ids) : ids;
     state.index = 0;
     state.flipped = false;
@@ -81,27 +77,13 @@
       '<div class="card-controls">' +
       App.speech.button(w) +
       App.writing.linkHtml(w) +
-      '<button type="button" class="btn btn-bad" data-card="unknown">← ' + esc(t('dontKnow')) + '</button>' +
-      '<button type="button" class="btn btn-good" data-card="known">' + esc(t('know')) + ' →</button>' +
+      '<button type="button" class="btn btn-bad" data-card="unknown"><span class="card-arrow" aria-hidden="true">← </span>' + esc(t('dontKnow')) + '</button>' +
+      '<button type="button" class="btn btn-good" data-card="known">' + esc(t('know')) + '<span class="card-arrow" aria-hidden="true"> →</span></button>' +
       '</div>'
     );
   }
 
-  function upcomingHtml() {
-    var next = App.srs.upcoming();
-    return next ? '<p>' + esc(t('reviewNext', { date: App.srs.formatDate(next.date), n: next.count })) + '</p>' : '';
-  }
-
   function summaryHtml() {
-    if (state.deck.length === 0 && state.mode === 'review') {
-      var empty = App.srs.size() === 0;
-      return (
-        '<div class="deck-summary"><p>' + esc(t(empty ? 'reviewNothing' : 'reviewNone')) + '</p>' +
-        upcomingHtml() +
-        '<div class="button-row"><button type="button" class="btn btn-primary" data-card="deck-unlearned">' +
-        esc(t('filterUnlearned')) + ' →</button></div></div>'
-      );
-    }
     if (state.deck.length === 0 && state.mode === 'favorites') {
       return (
         '<div class="deck-summary"><p>' + esc(t('favoritesEmpty')) + '</p>' +
@@ -133,13 +115,12 @@
     return (
       '<div class="deck-summary"><p>' +
       esc(t('deckDone', { known: state.known, unknown: state.unknown.length })) +
-      '</p>' + (state.mode === 'review' ? upcomingHtml() : '') +
+      '</p>' +
       '<div class="button-row">' + buttons + '</div></div>'
     );
   }
 
   function renderControls() {
-    el.mode.querySelector('[data-deck="review"]').textContent = t('deckDue', { n: App.srs.dueCount() });
     el.mode.querySelectorAll('[data-deck]').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-deck') === state.mode));
     });
@@ -153,8 +134,8 @@
     renderControls();
     var w = current();
     el.area.innerHTML = w ? cardHtml(w) : summaryHtml();
-    // Under the buttons: how to flip, plus (review decks) how the intervals grow.
-    el.hint.innerHTML = w ? esc(t('flipHint')) + (state.mode === 'review' ? '<br>' + esc(t('srsHint')) : '') : '';
+    // Under the buttons: how to flip.
+    el.hint.innerHTML = w ? esc(t('flipHint')) : '';
     if (hadFocus) {
       var target = el.area.querySelector('#flashcard') || el.area.querySelector('.btn-primary, .btn');
       if (target) target.focus();
@@ -180,11 +161,8 @@
     var w = current();
     if (!w) return;
     answering = true;
-    if (knows && App.srs.isDue(w.id)) App.srs.promote(w.id);
-    else if (knows) App.progress.set(w.id, true);
-    // A learned word stays learned and goes back to step 1 (review tomorrow), so a
-    // practice round in All / Learned can't wipe progress.
-    else if (App.progress.has(w.id)) App.srs.reset(w.id);
+    // "I don't know" leaves a learned word learned, so a practice round in All / Learned can't wipe progress.
+    if (knows) App.progress.set(w.id, true);
     answering = false;
     if (knows) state.known++;
     else state.unknown.push(w.id);
@@ -222,7 +200,7 @@
   function handleKey(e) {
     var w = current();
     if (!w) return false;
-    var onButton = e.target.closest && e.target.closest('button');
+    var onButton = e.target.closest && e.target.closest('button, a'); // links (pencil, site title) keep Enter
     if ((e.key === ' ' || e.key === 'Enter') && !onButton) {
       flip();
       return true;
@@ -266,14 +244,6 @@
         render();
       }
     });
-    App.on('srs', function () {
-      if (untouched() && state.mode === 'review') {
-        build();
-        render();
-      } else {
-        renderControls(); // due count on the Due button
-      }
-    });
     App.on('favorites', function (p) {
       var w = current();
       // Starring the card on screen only updates its star; other changes (e.g. from the
@@ -297,8 +267,7 @@
 
   /**
    * Called by app.js whenever the tab becomes visible. A deck that hasn't been
-   * started is rebuilt, so it reflects changes made elsewhere and a new day
-   * (words that became due after midnight).
+   * started is rebuilt, so it reflects changes made elsewhere (word list, favorites).
    */
   function show() {
     if (!untouched()) return;

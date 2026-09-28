@@ -66,18 +66,6 @@
       return App.util.dateStr(new Date());
     },
 
-    addDays: function (s, n) {
-      var d = App.util.parseDate(s);
-      d.setDate(d.getDate() + n);
-      return App.util.dateStr(d);
-    },
-
-    /** Whole days from today until the date s (negative if overdue). */
-    daysUntil: function (s) {
-      var ms = App.util.parseDate(s) - App.util.parseDate(App.util.today());
-      return Math.round(ms / 86400000);
-    },
-
     /** The word id for a stored value (1, "1"), or null if it is not one of our words. */
     wordId: function (x) {
       var id = typeof x === 'string' && /^\d+$/.test(x) ? Number(x) : x;

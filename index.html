@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>A1 中文 500</title>
-  <meta name="description" content="A1 Chinese, 500 words: word list, flashcards with spaced repetition, quiz, and stroke-order writing practice.">
+  <meta name="description" content="A1 Chinese, 500 words: word list, flashcards, quiz, and stroke-order writing practice.">
   <script>
     // Apply the saved theme before first paint to avoid a flash.
     try {
@@ -126,8 +126,7 @@
           <details class="home-howto">
             <summary data-i18n="homeHowTo">How it works</summary>
             <ul>
-              <li data-i18n="howTo1">Press "I know" on a flashcard to add the word to your review schedule.</li>
-              <li data-i18n="howTo2">Reviews come back after 1 → 2 → 4 → 7 → 14 days. "I don't know" starts the word over.</li>
+              <li data-i18n="howTo1">Word list: press "Mark learned" on words you already know. Learn new ones in Flashcards ("Not yet").</li>
               <li data-i18n="howTo3">Quiz: look at the hanzi and pick its meaning from 4 options.</li>
               <li data-i18n="howTo4">Writing: watch the stroke order, trace it, then write from memory.</li>
               <li data-i18n="howTo5">Progress is saved in this browser only. Use "Export progress" to move it to another device.</li>
@@ -190,7 +189,6 @@
               <button type="button" class="btn" data-deck="all" data-i18n="filterAll">All</button>
               <button type="button" class="btn" data-deck="learned" data-i18n="filterLearned">Learned</button>
               <button type="button" class="btn" data-deck="unlearned" data-i18n="filterUnlearned">Not yet</button>
-              <button type="button" class="btn" data-deck="review">Due</button>
             </div>
           </div>
           <div>
@@ -253,7 +251,6 @@
   <script src="js/core.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/i18n.js"></script>
-  <script src="js/srs.js"></script>
   <script src="js/favorites.js"></script>
   <script src="js/speech.js"></script>
   <script src="js/list.js"></script>

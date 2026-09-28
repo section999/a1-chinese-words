@@ -80,20 +80,13 @@
     );
   }
 
-  function writtenBadge(w) {
-    var r = App.writing.record(w.id);
-    if (!r) return '';
-    var label = t('writtenBadge') + ' · ' + t('writeRecord', { m: r.best, n: r.tries });
-    return '<span class="write-badge" title="' + esc(label) + '">✍<span class="visually-hidden"> ' + esc(label) + '</span></span>';
-  }
-
   function rowHtml(w) {
     return (
       '<li class="word-row' + (App.progress.has(w.id) ? ' is-learned' : '') + '" data-id="' + w.id + '">' +
       '<span class="word-num">' + w.id + '</span>' +
       '<span class="hanzi" lang="zh-CN">' + esc(w.hanzi) + '</span>' +
       '<div class="word-info">' +
-      '<div class="word-head">' + App.view.pinyinHtml(w) + writtenBadge(w) + '</div>' +
+      '<div class="word-head">' + App.view.pinyinHtml(w) + '</div>' +
       '<p class="word-meaning">' + esc(App.view.meaning(w)) + '</p>' +
       App.view.extrasHtml(w) +
       '</div>' +
@@ -189,7 +182,6 @@
       else updateRow(p.id);
     });
     App.on('lang', render);
-    App.on('writing', render);
     // Update just the favorite button so focus stays on the row.
     App.on('favorites', function (p) {
       var btn = el.list.querySelector('[data-fav="' + p.id + '"]');

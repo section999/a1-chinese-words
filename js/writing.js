@@ -686,7 +686,7 @@
     return false;
   }
 
-  /** "✍" link used by the word list and flashcards. */
+  /** Pencil link used by the word list and flashcards. */
   function linkHtml(w) {
     return (
       '<a class="btn btn-icon write-link" href="#write/' + w.id + '" aria-label="' +

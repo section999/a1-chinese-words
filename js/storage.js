@@ -3,6 +3,9 @@
   'use strict';
 
   var PREFIX = 'a1zh:';
+  // Saved by features that were removed (review schedule, sidebar, missed words). Deleted at
+  // startup and skipped when importing an old backup.
+  var LEGACY_KEYS = ['srs', 'sidebarCollapsed', 'missed'];
 
   var storage = {
     get: function (key, fallback) {
@@ -47,7 +50,7 @@
      * back and false is returned, so a failed import never loses progress.
      */
     restore: function (data) {
-      var keys = Object.keys(data);
+      var keys = Object.keys(data).filter(function (k) { return LEGACY_KEYS.indexOf(k) === -1; });
       var before = {};
       var written = []; // keys overwritten so far, for rolling back
       try {
@@ -77,6 +80,12 @@
       }
     },
   };
+
+  try {
+    LEGACY_KEYS.forEach(function (k) { localStorage.removeItem(PREFIX + k); });
+  } catch (e) {
+    /* storage disabled */
+  }
 
   // Only real word ids, as numbers ("1" -> 1); anything else in storage is dropped.
   var learned = new Set();

@@ -32,7 +32,10 @@
 
   /** First English sense, lowercased: "outside, outdoors" -> "outside", "can (be able to)" -> "can". */
   function senseKey(w) {
-    return w.en.split(/[,;(]/)[0].trim().toLowerCase();
+    var en = w.en.trim().toLowerCase();
+    // "(particle: …)", "(measure word for books)": the parenthesis is the meaning itself.
+    if (en.charAt(0) === '(') return en;
+    return en.split(/[,;(]/)[0].trim();
   }
 
   function sharesChar(a, b) {
@@ -195,6 +198,14 @@
   function render(moveFocus) {
     var html = state.phase === 'question' ? questionHtml() : state.phase === 'result' ? resultHtml() : setupHtml();
     el.area.innerHTML = html;
+    if (moveFocus && state.phase === 'result') {
+      // Start at the title and score, not the "New quiz" button below the mistakes list.
+      var title = el.area.querySelector('.quiz-result .panel-title');
+      title.tabIndex = -1;
+      title.focus({ preventScroll: true });
+      title.scrollIntoView({ block: 'start' });
+      return;
+    }
     if (moveFocus) {
       var target =
         el.area.querySelector('[data-quiz="next"]') ||
@@ -263,7 +274,7 @@
       if (id !== undefined) choose(id);
       return true;
     }
-    if (e.key === 'Enter' && q.chosen !== null && !(e.target.closest && e.target.closest('button'))) {
+    if (e.key === 'Enter' && q.chosen !== null && !(e.target.closest && e.target.closest('button, a'))) {
       next();
       return true;
     }
