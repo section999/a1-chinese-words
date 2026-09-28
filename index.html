@@ -96,9 +96,6 @@
       <button type="button" class="tab" role="tab" id="tab-write" aria-controls="panel-write" data-tab="write">
         <span class="tab-index" aria-hidden="true">4:</span><span data-i18n="tabWrite">Writing</span>
       </button>
-      <button type="button" class="tab" role="tab" id="tab-favorites" aria-controls="panel-favorites" data-tab="favorites">
-        <span class="tab-index" aria-hidden="true">5:</span><span data-i18n="tabFavorites">Favorites</span>
-      </button>
     </nav>
 
     <main id="main" tabindex="-1">
@@ -151,6 +148,7 @@
               <button type="button" class="btn" data-filter="all" data-i18n="filterAll">All</button>
               <button type="button" class="btn" data-filter="learned" data-i18n="filterLearned">Learned</button>
               <button type="button" class="btn" data-filter="unlearned" data-i18n="filterUnlearned">Not yet</button>
+              <button type="button" class="btn" data-filter="favorites" data-i18n="filterFavorites">Favorites</button>
             </div>
           </div>
           <div>
@@ -169,6 +167,10 @@
             <span id="status-text"></span>
             <span class="status-bar" id="status-bar" aria-hidden="true"></span>
           </p>
+        </div>
+        <!-- Shown with the Favorites filter -->
+        <div class="list-practice" id="list-practice" hidden>
+          <button type="button" class="btn btn-primary" id="list-practice-btn"><span data-i18n="favoritesPractice">Practice with flashcards</span> →</button>
         </div>
         <ul class="word-list" id="word-list"></ul>
         <p class="empty-state" id="list-empty" hidden data-i18n="noResults">No matching words.</p>
@@ -189,6 +191,7 @@
               <button type="button" class="btn" data-deck="all" data-i18n="filterAll">All</button>
               <button type="button" class="btn" data-deck="learned" data-i18n="filterLearned">Learned</button>
               <button type="button" class="btn" data-deck="unlearned" data-i18n="filterUnlearned">Not yet</button>
+              <button type="button" class="btn" data-deck="favorites" data-i18n="filterFavorites">Favorites</button>
             </div>
           </div>
           <div>
@@ -238,12 +241,6 @@
         <div id="write-area"></div>
         <p class="hint" id="write-hint"></p>
       </section>
-
-      <!-- Favorites -->
-      <section class="panel" id="panel-favorites" role="tabpanel" aria-labelledby="tab-favorites" hidden>
-        <h1 class="panel-title visually-hidden"><span data-i18n="tabFavorites">Favorites</span></h1>
-        <div id="favorites-area"></div>
-      </section>
     </main>
   </div>
 
@@ -259,7 +256,6 @@
   <script src="js/writing.js"></script>
   <script src="js/backup.js"></script>
   <script src="js/home.js"></script>
-  <script src="js/favorites-view.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

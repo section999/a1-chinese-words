@@ -120,6 +120,12 @@ a:hover {
   outline-offset: 3px;
 }
 
+/* <main> only receives focus from code (skip link, after changing views) so screen readers
+   continue from the content; an outline around the whole page area helps no one. */
+#main:focus {
+  outline: none;
+}
+
 [hidden] {
   display: none !important;
 }
@@ -1099,17 +1105,8 @@ main {
   text-decoration: none;
 }
 
-.favorites-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.favorites-head .result-count {
-  margin: 0;
+.list-practice {
+  margin: 0 0 16px;
 }
 
 /* Writing: toolbar, word card and hint are all centered. */
@@ -1585,9 +1582,11 @@ code {
     font-size: 1.125rem;
   }
 
+  /* Smaller tab text so all four tabs fit on most phones (the edge fade covers the rest) */
   .tab {
     flex: 1 1 auto;
-    padding: 8px 10px;
+    padding: 8px 6px;
+    font-size: 0.85rem;
   }
 
   .tab-index {
@@ -1641,7 +1640,7 @@ code {
 
   /* All decks on one row so the answer buttons stay above the fold */
   #deck-mode {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   #deck-mode .btn {
@@ -1655,10 +1654,10 @@ code {
     margin-top: 12px;
   }
 
-  /* Three filters in one row; long labels (Ukrainian) wrap inside the button */
+  /* Four filters: two rows of two; long labels (Ukrainian) wrap inside the button */
   .list-toolbar #list-filter {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   #list-filter .btn {
@@ -1690,6 +1689,10 @@ code {
 
   #panel-cards .field-label {
     margin-bottom: 2px;
+  }
+
+  .tabs {
+    margin-top: 6px;
   }
 }
 

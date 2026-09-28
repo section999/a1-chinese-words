@@ -58,8 +58,6 @@
     var f = state.flipped;
     return (
       '<p class="deck-progress">' +
-      // The Favorites deck has no button of its own, so name it here.
-      (state.mode === 'favorites' ? '★ ' + esc(t('tabFavorites')) + ' · ' : '') +
       (state.index + 1) + ' / ' + state.deck.length +
       '</p>' +
       '<div class="card-scene">' +
@@ -247,7 +245,7 @@
     App.on('favorites', function (p) {
       var w = current();
       // Starring the card on screen only updates its star; other changes (e.g. from the
-      // Favorites page) refresh an unstarted Favorites deck.
+      // word list) refresh an unstarted Favorites deck.
       var onScreen = !el.panel.hidden && w && p.id === w.id;
       if (untouched() && state.mode === 'favorites' && !onScreen) {
         build();

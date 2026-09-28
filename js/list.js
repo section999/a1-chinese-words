@@ -13,7 +13,7 @@
     rank: {}, // word id -> position in the current shuffle
   };
 
-  if (['all', 'learned', 'unlearned'].indexOf(state.filter) === -1) state.filter = 'all';
+  if (['all', 'learned', 'unlearned', 'favorites'].indexOf(state.filter) === -1) state.filter = 'all';
 
   var el = {};
   var dirty = false; // progress changed in another view while the list was hidden
@@ -63,6 +63,7 @@
     var list = App.words.filter(function (w) {
       if (state.filter === 'learned' && !App.progress.has(w.id)) return false;
       if (state.filter === 'unlearned' && App.progress.has(w.id)) return false;
+      if (state.filter === 'favorites' && !App.favorites.has(w.id)) return false;
       return matches(w, q, qFold);
     });
     list.sort(function (a, b) {
@@ -117,7 +118,15 @@
     var list = visibleWords();
     el.list.innerHTML = list.map(rowHtml).join('');
     el.empty.hidden = list.length > 0;
+    // No favorites yet: explain how to add them instead of "No matching words".
+    el.empty.textContent = state.filter === 'favorites' && !App.favorites.size() ? t('favoritesEmpty') : t('noResults');
+    updatePractice();
     el.count.textContent = t('resultCount', { n: list.length });
+  }
+
+  /** "Practice with flashcards" under the Favorites filter, while there are favorites. */
+  function updatePractice() {
+    el.practice.hidden = !(state.filter === 'favorites' && App.favorites.size() > 0);
   }
 
   /** Update one row in place so the toggle keeps focus. */
@@ -137,6 +146,7 @@
     el.order = document.getElementById('list-order');
     el.panel = document.getElementById('panel-list');
     el.list = document.getElementById('word-list');
+    el.practice = document.getElementById('list-practice');
     el.empty = document.getElementById('list-empty');
     el.count = document.getElementById('result-count');
 
@@ -182,10 +192,18 @@
       else updateRow(p.id);
     });
     App.on('lang', render);
-    // Update just the favorite button so focus stays on the row.
+    // Update just the favorite button so focus stays on the row (an un-starred word stays
+    // in the Favorites list until the filter is used again). Changes from other views re-filter on show().
     App.on('favorites', function (p) {
+      if (el.panel.hidden) dirty = true;
       var btn = el.list.querySelector('[data-fav="' + p.id + '"]');
       if (btn) btn.setAttribute('aria-pressed', String(App.favorites.has(p.id)));
+      updatePractice();
+    });
+
+    el.practice.addEventListener('click', function () {
+      App.cards.setMode('favorites');
+      location.hash = 'cards';
     });
 
     render();

@@ -3,7 +3,7 @@
   'use strict';
 
   var t = App.i18n.t;
-  var TABS = ['list', 'cards', 'quiz', 'write', 'favorites'];
+  var TABS = ['list', 'cards', 'quiz', 'write'];
   var VIEWS = ['home'].concat(TABS);
   var activeTab = null;
 
@@ -11,6 +11,12 @@
 
   /** name: view id (no hash = home); arg: optional part after "/" in the hash (#write/75 -> "75"). */
   function showTab(name, arg) {
+    // Favorites used to be a tab: #favorites (menu link, old bookmarks) is the word list's Favorites filter.
+    if (name === 'favorites') {
+      App.list.setFilter('favorites');
+      history.replaceState(null, '', '#list');
+      name = 'list';
+    }
     if (VIEWS.indexOf(name) === -1) name = 'home';
     var wasHome = activeTab === 'home';
     var home = name === 'home';
@@ -34,7 +40,6 @@
     if (!home) revealTab(document.getElementById('tab-' + name));
     if (home) App.home.show();
     if (name === 'write') App.writing.show(arg);
-    if (name === 'favorites') App.favoritesView.show();
     if (name === 'list') App.list.show();
     if (name === 'cards') App.cards.show();
     if (wasHome !== home) window.scrollTo(0, 0);
@@ -261,7 +266,6 @@
     App.writing.init();
     App.backup.init();
     App.home.init();
-    App.favoritesView.init();
     initMenu();
     initTabs(); // last: showing a view needs every module ready
     App.on('progress', renderStatus);

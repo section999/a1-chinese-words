@@ -61,7 +61,7 @@ The original values are kept in each entry's `raw`. Suffixes that sound odd on t
 ## File structure
 
 ```
-index.html            Page (Home / Word list / Flashcards / Quiz / Writing / Favorites)
+index.html            Page (Home / Word list / Flashcards / Quiz / Writing)
 vocabulary.txt        Source data (TSV)
 data/vocabulary.js    Conversion output
 scripts/convert.js    Conversion script
@@ -72,7 +72,6 @@ css/style.css         Styles, theme variables (dark default / light)
 js/core.js            Namespace, events, shared helpers
 js/storage.js         localStorage, learned-word progress
 js/favorites.js       Favorite words storage, favorite buttons
-js/favorites-view.js  Favorites page
 js/i18n.js            UI text (English / Ukrainian / Korean), word display helpers
 js/speech.js          Pronunciation (Web Speech API)
 js/list.js            Word list
@@ -104,7 +103,9 @@ Shortcut hints are hidden on touch-only devices.
 
 Press **Favorite** next to a word in the word list, or the ☆ in a flashcard's top-left corner, to add it to favorites. Press again to remove it.
 
-- Tab 5, **Favorites**: the favorite words (by number) and a "Practice with flashcards" button (flashcards with only the favorite words)
+- Word list, **Favorites** filter: the favorite words, with search and order like the other filters, and a "Practice with flashcards" button
+- Flashcards, **Favorites** deck: flashcards with only the favorite words
+- The ☰ menu's Favorites link (and old `#favorites` links) open the word list with the Favorites filter
 
 ## Stored values (localStorage, `a1zh:` prefix)
 
@@ -112,7 +113,7 @@ Press **Favorite** next to a word in the word list, or the ☆ in a flashcard's 
 
 ## Backup
 
-**Export progress** in the hamburger menu (☰) downloads all the stored values above as `a1zh-backup-YYYY-MM-DD.json`. In another browser or device, choose that file with **Import progress** (menu or home page). After confirming, the current records are **replaced entirely** by the file's contents (not merged) and the page reloads. Files not exported from this site are not imported.
+**Export progress** in the hamburger menu (☰) downloads all the stored values above as `a1zh-backup-YYYY-MM-DD.json`. In another browser or device, choose that file with **Import progress** (menu or home page). After confirming, the current records are **replaced entirely** by the file's contents (not merged) and the page reloads. Files not exported from this site are not imported. Values left by removed features (`srs`, `sidebarCollapsed`, `missed`) are deleted at startup and skipped when importing an old backup.
 
 ## License
 
