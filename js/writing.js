@@ -338,6 +338,9 @@
     el.order.querySelectorAll('[data-order]').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-order') === state.order));
     });
+    // Folded bar on phones: "Trace · By number"
+    var modeKey = { view: 'modeView', trace: 'modeTrace', test: 'modeTest' }[state.mode];
+    el.summary.textContent = t(modeKey) + ' · ' + t(state.order === 'shuffle' ? 'orderShuffle' : 'orderNumber');
     // "4 / 500": the word number, or the place in the shuffled order.
     var pos = state.order === 'shuffle' ? state.seq.indexOf(state.id) + 1 : state.id;
     el.position.textContent = pos + ' / ' + App.words.length;
@@ -803,6 +806,8 @@
     el.mode = document.getElementById('write-mode');
     el.order = document.getElementById('write-order');
     el.position = document.getElementById('write-position');
+    el.summary = document.getElementById('write-options-summary');
+    App.foldBar(document.getElementById('write-toolbar'));
 
 
     el.area.addEventListener('click', onAreaClick);

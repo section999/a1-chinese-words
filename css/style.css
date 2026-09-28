@@ -656,19 +656,22 @@ main {
   padding-right: 16px;
 }
 
-/* Desktop: the wrappers drop out so Search, Show and Order sit in one grid row. */
-.list-search-row,
-.list-options {
+/*
+ * Fold bar (word list, writing). Desktop: the wrappers drop out, so the controls sit in
+ * the toolbar as before. Phones: the first row sticks under the header and the options
+ * fold behind .fold-toggle.
+ */
+.fold-bar-row,
+.fold-options {
   display: contents;
 }
 
-.list-options-toggle {
+.fold-toggle {
   display: none;
 }
 
-/* Phones: search + options button stick under the header; Show and Order fold away. */
 @media (max-width: 720px) {
-  .list-toolbar {
+  .toolbar.fold-bar {
     position: sticky;
     top: var(--header-h, 0px);
     z-index: 4;
@@ -679,9 +682,54 @@ main {
     border-bottom: 1px solid var(--bg-3);
   }
 
-  .list-search-row {
+  .fold-bar-row {
     display: flex;
     gap: 8px;
+  }
+
+  .fold-toggle {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  /* No search box (writing): the button fills the row and names the current choice */
+  .fold-toggle-wide {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .fold-toggle[aria-expanded="true"] {
+    background: var(--fg-0);
+    border-color: var(--fg-0);
+    color: var(--bg-0);
+  }
+
+  /* Shown while an option is not the default, so a folded filter isn't forgotten */
+  .fold-dot {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--yellow);
+  }
+
+  .fold-bar.is-filtered .fold-dot {
+    display: block;
+  }
+
+  .fold-options {
+    display: none;
+  }
+
+  .fold-bar.is-open .fold-options {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
   }
 
   .list-search {
@@ -698,44 +746,6 @@ main {
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
-  }
-
-  .list-options-toggle {
-    position: relative;
-    display: inline-flex;
-    flex: 0 0 auto;
-  }
-
-  .list-options-toggle[aria-expanded="true"] {
-    background: var(--fg-0);
-    border-color: var(--fg-0);
-    color: var(--bg-0);
-  }
-
-  /* Shown while Show or Order is not the default, so a folded filter isn't forgotten */
-  .list-options-dot {
-    display: none;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--yellow);
-  }
-
-  .list-toolbar.is-filtered .list-options-dot {
-    display: block;
-  }
-
-  .list-options {
-    display: none;
-  }
-
-  .list-toolbar.is-open .list-options {
-    display: grid;
-    gap: 12px;
-    margin-top: 12px;
   }
 
   #list-order .btn {
@@ -1742,6 +1752,12 @@ code {
   #write-mode {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+
+  #write-order {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
   }
 

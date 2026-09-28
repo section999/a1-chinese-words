@@ -23,6 +23,42 @@
     App.byId[w.id] = w;
   });
 
+  /* ---- Fold bar (phones): sticky toolbar whose options fold behind .fold-toggle ---- */
+
+  // The bar sticks right under the header, whose height changes with the screen width.
+  function measureHeader() {
+    var header = document.querySelector('.site-header');
+    if (header) document.documentElement.style.setProperty('--header-h', header.getBoundingClientRect().height + 'px');
+  }
+  measureHeader();
+  window.addEventListener('resize', measureHeader);
+
+  App.foldBar = function (bar) {
+    var toggle = bar.querySelector('.fold-toggle');
+    function isOpen() {
+      return bar.classList.contains('is-open');
+    }
+    function setOpen(open) {
+      bar.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    }
+    toggle.addEventListener('click', function () {
+      setOpen(!isOpen());
+    });
+    // Scrolling (or drawing) outside the bar folds the options away again.
+    function fold(e) {
+      if (isOpen() && !bar.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener('touchmove', fold, { passive: true });
+    document.addEventListener('wheel', fold, { passive: true });
+    return {
+      setOpen: setOpen,
+      isSticky: function () {
+        return getComputedStyle(bar).position === 'sticky';
+      },
+    };
+  };
+
   App.util = {
     escapeHtml: function (s) {
       return String(s).replace(/[&<>"']/g, function (c) {

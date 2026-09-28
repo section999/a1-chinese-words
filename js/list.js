@@ -111,26 +111,9 @@
     el.toolbar.classList.toggle('is-filtered', state.filter !== 'all' || state.order !== 'number');
   }
 
-  /* ---- Phones: sticky toolbar with Show / Order folded behind a button ---- */
-
-  function isSticky() {
-    return getComputedStyle(el.toolbar).position === 'sticky';
-  }
-
-  function setOptionsOpen(open) {
-    el.toolbar.classList.toggle('is-open', open);
-    el.optionsToggle.setAttribute('aria-expanded', String(open));
-  }
-
-  /** The toolbar sticks right under the header, whose height changes with the screen width. */
-  function measureHeader() {
-    var h = document.querySelector('.site-header').getBoundingClientRect().height;
-    document.documentElement.style.setProperty('--header-h', h + 'px');
-  }
-
-  /** After the list changes while scrolled down, start it again right under the sticky toolbar. */
+  /** After the list changes while scrolled down (phones), start it again right under the sticky toolbar. */
   function scrollToListTop() {
-    if (el.panel.hidden || !isSticky()) return;
+    if (el.panel.hidden || !el.fold.isSticky()) return;
     var gap = el.meta.getBoundingClientRect().top - el.toolbar.getBoundingClientRect().bottom;
     if (gap < 0) window.scrollBy(0, gap);
   }
@@ -179,22 +162,8 @@
     el.empty = document.getElementById('list-empty');
     el.count = document.getElementById('result-count');
     el.toolbar = document.getElementById('list-toolbar');
-    el.optionsToggle = document.getElementById('list-options-toggle');
+    el.fold = App.foldBar(el.toolbar);
     el.meta = el.panel.querySelector('.list-meta');
-
-    measureHeader();
-    window.addEventListener('resize', measureHeader);
-
-    el.optionsToggle.addEventListener('click', function () {
-      setOptionsOpen(!el.toolbar.classList.contains('is-open'));
-    });
-
-    // Scrolling the list (not the toolbar) folds the options away again.
-    function foldOnScroll(e) {
-      if (el.toolbar.classList.contains('is-open') && !el.toolbar.contains(e.target)) setOptionsOpen(false);
-    }
-    document.addEventListener('touchmove', foldOnScroll, { passive: true });
-    document.addEventListener('wheel', foldOnScroll, { passive: true });
 
     el.search.addEventListener('input', function () {
       state.query = el.search.value;

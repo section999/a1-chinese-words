@@ -139,23 +139,23 @@
         <h1 class="panel-title visually-hidden"><span data-i18n="tabList">Word list</span></h1>
 
         <!-- Phones: sticks under the header; Show and Order fold behind the options button. -->
-        <div class="toolbar list-toolbar" id="list-toolbar">
-          <div class="list-search-row">
+        <div class="toolbar list-toolbar fold-bar" id="list-toolbar">
+          <div class="fold-bar-row">
             <div class="list-search">
               <label class="field-label" for="search" data-i18n="search">Search</label>
               <input class="input" type="search" id="search" autocomplete="off" spellcheck="false"
                      data-i18n-placeholder="searchPlaceholder">
             </div>
-            <button type="button" class="btn btn-icon list-options-toggle" id="list-options-toggle"
+            <button type="button" class="btn btn-icon fold-toggle" id="list-options-toggle"
                     aria-expanded="false" aria-controls="list-options"
                     data-i18n-aria-label="listOptions" data-i18n-title="listOptions" aria-label="Show and order" title="Show and order">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M7 12h10M10 17h4"/>
               </svg>
-              <span class="list-options-dot" aria-hidden="true"></span>
+              <span class="fold-dot" aria-hidden="true"></span>
             </button>
           </div>
-          <div class="list-options" id="list-options">
+          <div class="fold-options" id="list-options">
             <div>
               <span class="field-label" id="filter-label" data-i18n="show">Show</span>
               <div class="segmented seg-grid" role="group" aria-labelledby="filter-label" id="list-filter">
@@ -214,20 +214,32 @@
       <section class="panel" id="panel-write" role="tabpanel" aria-labelledby="tab-write" hidden>
         <h1 class="panel-title visually-hidden"><span data-i18n="tabWrite">Writing</span></h1>
 
-        <div class="toolbar">
-          <div>
-            <span class="field-label" id="write-mode-label" data-i18n="writeMode">Mode</span>
-            <div class="segmented" role="group" aria-labelledby="write-mode-label" id="write-mode">
-              <button type="button" class="btn" data-write-mode="view" data-i18n="modeView">Watch</button>
-              <button type="button" class="btn" data-write-mode="trace" data-i18n="modeTrace">Trace</button>
-              <button type="button" class="btn" data-write-mode="test" data-i18n="modeTest">From memory</button>
-            </div>
+        <!-- Phones: sticks under the header; Mode and Order fold behind a button that shows the current choice. -->
+        <div class="toolbar fold-bar" id="write-toolbar">
+          <div class="fold-bar-row">
+            <button type="button" class="btn fold-toggle fold-toggle-wide" id="write-options-toggle"
+                    aria-expanded="false" aria-controls="write-options">
+              <span id="write-options-summary"></span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M7 12h10M10 17h4"/>
+              </svg>
+            </button>
           </div>
-          <div>
-            <span class="field-label" id="write-order-label" data-i18n="order">Order</span>
-            <div class="segmented" role="group" aria-labelledby="write-order-label" id="write-order">
-              <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
-              <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
+          <div class="fold-options" id="write-options">
+            <div>
+              <span class="field-label" id="write-mode-label" data-i18n="writeMode">Mode</span>
+              <div class="segmented" role="group" aria-labelledby="write-mode-label" id="write-mode">
+                <button type="button" class="btn" data-write-mode="view" data-i18n="modeView">Watch</button>
+                <button type="button" class="btn" data-write-mode="trace" data-i18n="modeTrace">Trace</button>
+                <button type="button" class="btn" data-write-mode="test" data-i18n="modeTest">From memory</button>
+              </div>
+            </div>
+            <div>
+              <span class="field-label" id="write-order-label" data-i18n="order">Order</span>
+              <div class="segmented" role="group" aria-labelledby="write-order-label" id="write-order">
+                <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
+                <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
+              </div>
             </div>
           </div>
         </div>
