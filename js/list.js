@@ -72,12 +72,17 @@
     return list;
   }
 
+  var CHECK =
+    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" ' +
+    'd="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
   function learnedButton(w) {
     var on = App.progress.has(w.id);
     return (
-      '<button type="button" class="btn btn-small learned-toggle" data-learn="' + w.id + '" aria-pressed="' + on +
-      '" aria-label="' + esc(t('markLearnedLabel', { word: w.hanzi })) + '">' +
-      esc(on ? '✓ ' + t('learnedOn') : t('markLearned')) + '</button>'
+      '<button type="button" class="btn btn-icon learned-toggle" data-learn="' + w.id + '" aria-pressed="' + on +
+      '" aria-label="' + esc(t('markLearnedLabel', { word: w.hanzi })) + '" title="' + esc(t('markLearned')) + '">' +
+      CHECK + '</button>'
     );
   }
 
@@ -137,7 +142,6 @@
     row.classList.toggle('is-learned', on);
     var btn = row.querySelector('[data-learn]');
     btn.setAttribute('aria-pressed', String(on));
-    btn.textContent = on ? '✓ ' + t('learnedOn') : t('markLearned');
   }
 
   function init() {

@@ -14,6 +14,11 @@
     App.emit('favorites', { id: id });
   }
 
+  var STAR =
+    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" ' +
+    'd="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>';
+
   App.favorites = {
     has: function (id) {
       return !!favs[id];
@@ -38,9 +43,9 @@
     buttonHtml: function (w) {
       var on = !!favs[w.id];
       return (
-        '<button type="button" class="btn btn-small fav-toggle" data-fav="' + w.id + '" aria-pressed="' + on +
-        '" aria-label="' + App.util.escapeHtml(App.i18n.t('favoriteLabel', { word: w.hanzi })) + '">' +
-        App.util.escapeHtml(App.i18n.t('favorite')) + '</button>'
+        '<button type="button" class="btn btn-icon fav-toggle" data-fav="' + w.id + '" aria-pressed="' + on +
+        '" aria-label="' + App.util.escapeHtml(App.i18n.t('favoriteLabel', { word: w.hanzi })) +
+        '" title="' + App.util.escapeHtml(App.i18n.t('favorite')) + '">' + STAR + '</button>'
       );
     },
   };

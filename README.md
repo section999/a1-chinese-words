@@ -6,7 +6,7 @@ A site for learning 500 A1-level Chinese words. Plain HTML/CSS/JavaScript with n
 
 Open `index.html` directly in a browser (it also works from `file://`).
 
-- Fonts (Lato, Noto Sans KR) load from the web. Offline, the system fonts are used instead.
+- Type follows the freeCodeCamp style guide: Hack-ZeroSlash (monospace, `vendor/fonts/`), Lato (longer text) and SaxMono (the logo, as SVG outlines in `index.html`). Lato and Noto Sans KR load from the web; offline, system fonts are used instead.
 - Pronunciation uses the browser's Web Speech API (zh-CN). If no Chinese voice is installed, the default voice may read the word or there may be no sound.
 - Stroke-order writing uses `data/strokes.js` and `vendor/hanzi-writer.min.js`, so it works without internet. Both files (about 650 KB) load the first time the Writing tab opens, so they don't slow down the first page load.
 
@@ -69,7 +69,7 @@ data/vocabulary.js    Conversion output
 scripts/convert.js    Conversion script
 scripts/fetch-strokes.js  Downloads stroke data → data/strokes.js
 data/strokes.js       Stroke data (generated)
-vendor/               Hanzi Writer 3.7.3 + license files
+vendor/               Hanzi Writer 3.7.3, Hack-ZeroSlash fonts + license files
 css/style.css         Styles, theme variables (dark default / light)
 js/core.js            Namespace, events, shared helpers
 js/storage.js         localStorage, learned-word progress
@@ -121,3 +121,5 @@ Press **Favorite** next to a word in the word list, or the ☆ in a flashcard's 
 
 - Hanzi Writer: MIT (`vendor/LICENSE-hanzi-writer.txt`)
 - Stroke data: hanzi-writer-data / Make Me a Hanzi, Arphic Public License (`vendor/ARPHICPL.txt`, `vendor/COPYING-stroke-data.md`)
+- Hack-ZeroSlash: MIT + Bitstream Vera License (`vendor/LICENSE-hack.md`)
+- SaxMono (logo): s.a.x. Software free license (`vendor/LICENSE-saxmono.txt`)

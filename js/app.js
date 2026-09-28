@@ -213,18 +213,14 @@
     renderTheme();
   }
 
-  /* ---- Status line: learned [██████░░░░] n/500 ---- */
+  /* ---- Status line: Learned n / 500 (pct%) ---- */
 
   function renderStatus() {
     var n = App.progress.count();
     var total = App.words.length;
     var pct = total ? Math.round((n / total) * 100) : 0;
-    var cells = 20;
-    var filled = total ? Math.round((n / total) * cells) : 0;
     document.getElementById('status-text').textContent =
       t('statusLearned', { n: n, total: total, pct: pct });
-    document.getElementById('status-bar').textContent =
-      '[' + '#'.repeat(filled) + '-'.repeat(cells - filled) + ']';
   }
 
   /* ---- Misc ---- */

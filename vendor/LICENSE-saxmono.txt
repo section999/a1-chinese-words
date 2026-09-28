@@ -1,0 +1,11 @@
+saxMono
+Designer: Robert Norton. Publisher: s.a.x. Software (http://www.saxsoft.de/typography/)
+Source: freeCodeCamp design style guide (https://design-style-guide.freecodecamp.org/)
+
+The site logo ("A1 Chinese Words" in index.html) is text set in saxMono, saved as SVG outlines.
+The font file itself is not shipped: browsers reject it as a web font (broken cmap table),
+and its license does not allow fixing it.
+
+License (from the font's name table, see http://www.saxsoft.de/typography/freelicense.htm):
+"You may download this font, circulate it und use it freely. You may not alter rename,
+change copyrights or modify this font in any way."

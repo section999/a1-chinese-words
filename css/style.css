@@ -59,9 +59,27 @@
   --write-complete: #00471b;
 }
 
+/* freeCodeCamp type: Hack-ZeroSlash (monospace), Lato (longer text, from Google Fonts).
+   The logo is SaxMono drawn as SVG outlines in index.html: browsers reject the font file itself. */
+@font-face {
+  font-family: "Hack-ZeroSlash";
+  src: url("../vendor/fonts/Hack-ZeroSlash-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hack-ZeroSlash";
+  src: url("../vendor/fonts/Hack-ZeroSlash-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --font-body: "Lato", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
-  --font-mono: "Hack", "Hack-ZeroSlash", "DejaVu Sans Mono", "Consolas", "Menlo", "Noto Sans KR", monospace;
+  --font-mono: "Hack-ZeroSlash", "Hack", "DejaVu Sans Mono", "Consolas", "Menlo", "Noto Sans KR", monospace;
   --font-hanzi: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Source Han Sans SC", sans-serif;
 
   --border: 3px;
@@ -373,6 +391,13 @@ a:hover {
   text-decoration: none;
 }
 
+/* SaxMono outlines: 17968 x 2009 units at 2048 per em, baseline 555 units above the bottom */
+.site-logo {
+  width: 8.773em;
+  height: 0.981em;
+  vertical-align: -0.271em;
+}
+
 .site-title-link:hover {
   color: var(--fg-0);
   text-decoration: underline;
@@ -436,7 +461,7 @@ a:hover {
 .menu-note {
   margin: 10px 0 0;
   color: var(--fg-3);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 /* Folding groups (Language, Progress) */
@@ -470,7 +495,7 @@ a:hover {
 
 .menu-summary-value {
   color: var(--fg-3);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 /* Chevron: right when folded, down when open */
@@ -501,7 +526,7 @@ a:hover {
 
 .site-menu .backup-message {
   margin-top: 8px;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 /* ==========================================================================
@@ -566,11 +591,6 @@ a:hover {
   color: var(--fg-0);
   font-weight: 700;
   box-shadow: inset 0 -3px 0 var(--yellow);
-}
-
-.status-bar {
-  color: var(--green);
-  white-space: pre;
 }
 
 main {
@@ -686,7 +706,7 @@ main {
 
 .list-progress {
   margin: 0;
-  color: var(--fg-1);
+  color: var(--green);
 }
 
 .word-list {
@@ -757,6 +777,10 @@ main {
   background: var(--yellow);
   border-color: var(--yellow);
   color: var(--on-accent);
+}
+
+.fav-toggle[aria-pressed="true"] .icon path {
+  fill: currentColor;
 }
 
 .empty-state {
@@ -1436,7 +1460,7 @@ code {
 .home-subtitle {
   margin: 0 0 8px;
   color: var(--blue);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1556,6 +1580,11 @@ code {
     grid-area: actions;
   }
 
+  /* Push Mark learned + Favorite to the right edge */
+  .word-actions .learned-toggle {
+    margin-left: auto;
+  }
+
   .quiz-options {
     grid-template-columns: 1fr;
   }
@@ -1587,10 +1616,6 @@ code {
 }
 
 @media (max-width: 480px) {
-  .site-title {
-    font-size: 0.85rem;
-  }
-
   .word-row > .hanzi {
     font-size: 48px;
   }
@@ -1599,11 +1624,10 @@ code {
     font-size: 1.125rem;
   }
 
-  /* Smaller tab text so all four tabs fit on most phones (the edge fade covers the rest) */
+  /* Tighter tabs so all four fit on most phones (the edge fade covers the rest) */
   .tab {
     flex: 1 1 auto;
     padding: 8px 6px;
-    font-size: 0.85rem;
   }
 
   .card {
@@ -1649,18 +1673,6 @@ code {
 
   .segmented.seg-grid .btn + .btn {
     margin-left: 0;
-  }
-
-  /* All decks on one row so the answer buttons stay above the fold */
-  #deck-mode {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  #deck-mode .btn {
-    padding: 6px 2px;
-    font-size: 0.875rem;
-    line-height: 1.2;
-    white-space: normal;
   }
 
   .tabs {
@@ -1709,23 +1721,21 @@ code {
   }
 }
 
-@media (max-width: 360px) {
-  /* "A1 Chinese Words" next to three header buttons on the narrowest phones */
-  .site-title {
-    font-size: 0.75rem;
-  }
-
+/* "A1 Chinese Words" next to three header buttons on narrow phones */
+@media (max-width: 400px) {
   .site-title .cursor {
     display: none;
   }
+}
 
+@media (max-width: 360px) {
   .header-controls {
-    gap: 6px;
+    gap: 4px;
   }
 
   .header-controls .btn-icon {
-    width: 44px;
-    min-width: 44px;
+    width: 42px;
+    min-width: 42px;
   }
 
   .card-arrow {
@@ -1734,12 +1744,6 @@ code {
 
   .card-controls .btn {
     padding: 6px 8px;
-    font-size: 0.9rem;
-  }
-
-  /* 0.9rem = 16.2px: small enough for the Ukrainian placeholder, big enough that iOS doesn't zoom */
-  #search {
-    font-size: 0.9rem;
   }
 
   .card-controls {
@@ -1761,11 +1765,17 @@ code {
   /* Long mode names (Ukrainian) fit three across on the narrowest phones */
   #write-mode .btn {
     padding: 6px 4px;
-    font-size: 0.875rem;
   }
 
   .tab {
     padding: 8px 4px;
+  }
+}
+
+@media (max-width: 340px) {
+  /* The logo is an image (SVG), not body text, so it can go below 18px to stay whole */
+  .site-title {
+    font-size: 0.85rem;
   }
 }
 
