@@ -1,4 +1,4 @@
-# A1 中文 500
+# A1 Chinese Words
 
 A site for learning 500 A1-level Chinese words. Plain HTML/CSS/JavaScript with no build step.
 
@@ -85,7 +85,7 @@ js/app.js             Startup, view switching (URL hash), hamburger menu, theme,
 
 ## Home and menu
 
-- Opening the site without a hash shows the home page. Addresses like `#cards` or `#write/83` skip the home page. The "A1 中文 500" header title or Home in the menu goes back.
+- Opening the site without a hash shows the home page. Addresses like `#cards` or `#write/83` skip the home page. The "A1 Chinese Words" header title or Home in the menu goes back.
 - The big home button is always **Start learning** and goes to the word list (Not yet filter).
 - If there are learned words or writing records, a progress summary appears.
 - The right side of the header has a freeCodeCamp donate link (❤️), a theme toggle, and a hamburger button (☰).

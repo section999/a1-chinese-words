@@ -4,7 +4,7 @@
 
   var STRINGS = {
     en: {
-      htmlTitle: 'A1 Chinese 500 Words',
+      htmlTitle: 'A1 Chinese Words',
       skipToContent: 'Skip to content',
       meaningLanguage: 'Language',
       sections: 'Sections',
@@ -131,7 +131,7 @@
 
     },
     ko: {
-      htmlTitle: 'A1 중국어 500단어',
+      htmlTitle: 'A1 Chinese Words',
       skipToContent: '본문으로 건너뛰기',
       meaningLanguage: '뜻 언어',
       sections: '메뉴',
@@ -259,7 +259,7 @@
     },
 
     uk: {
-      htmlTitle: '500 слів китайської A1',
+      htmlTitle: 'A1 Chinese Words',
       skipToContent: 'Перейти до змісту',
       meaningLanguage: 'Мова перекладу',
       sections: 'Меню',

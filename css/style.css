@@ -331,7 +331,10 @@ a:hover {
 }
 
 .site-title {
+  min-width: 0;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis; /* never runs under the header buttons */
   font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 400;
@@ -513,9 +516,9 @@ a:hover {
 
 .tabs {
   display: flex;
-  gap: 0;
+  gap: 4px;
   margin-top: 24px;
-  border-bottom: var(--border) solid var(--bg-3);
+  border-bottom: 1px solid var(--bg-3);
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -540,15 +543,15 @@ a:hover {
   mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
 }
 
+/* Plain text tabs; the selected one is bold with a yellow underline. */
 .tab {
   flex: 0 0 auto;
-  min-height: 52px;
+  min-height: 48px;
   white-space: nowrap;
-  padding: 8px 20px;
-  border: var(--border) solid transparent;
-  border-bottom: none;
+  padding: 8px 16px;
+  border: none;
   background: transparent;
-  color: var(--fg-2);
+  color: var(--fg-3);
   font-family: var(--font-mono);
   font-size: 1rem;
   cursor: pointer;
@@ -556,19 +559,13 @@ a:hover {
 
 .tab:hover {
   color: var(--fg-0);
-  background: var(--bg-1);
+  box-shadow: inset 0 -3px 0 var(--bg-3);
 }
 
 .tab[aria-selected="true"] {
-  background: var(--bg-2);
-  border-color: var(--bg-3);
   color: var(--fg-0);
-  box-shadow: inset 0 3px 0 var(--yellow);
-}
-
-.tab-index {
-  color: var(--yellow);
-  margin-right: 0.4em;
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--yellow);
 }
 
 .status-bar {
@@ -1574,6 +1571,10 @@ code {
 }
 
 @media (max-width: 480px) {
+  .site-title {
+    font-size: 0.85rem;
+  }
+
   .word-row > .hanzi {
     font-size: 48px;
   }
@@ -1587,10 +1588,6 @@ code {
     flex: 1 1 auto;
     padding: 8px 6px;
     font-size: 0.85rem;
-  }
-
-  .tab-index {
-    display: none;
   }
 
   .card {
@@ -1697,6 +1694,24 @@ code {
 }
 
 @media (max-width: 360px) {
+  /* "A1 Chinese Words" next to three header buttons on the narrowest phones */
+  .site-title {
+    font-size: 0.75rem;
+  }
+
+  .site-title .cursor {
+    display: none;
+  }
+
+  .header-controls {
+    gap: 6px;
+  }
+
+  .header-controls .btn-icon {
+    width: 44px;
+    min-width: 44px;
+  }
+
   .card-arrow {
     display: none;
   }
