@@ -1666,6 +1666,23 @@ code {
     padding: 6px 6px;
   }
 
+  /* 0.4x / 0.7x / 1.3x stay on one line between the arrows */
+  .write-controls {
+    gap: 8px;
+  }
+
+  .write-controls-main {
+    min-width: 0;
+  }
+
+  .write-speed {
+    flex-wrap: nowrap;
+  }
+
+  .write-speed .btn {
+    padding: 6px 10px;
+  }
+
   /* Long option groups: tidy grid instead of a ragged wrap */
   .seg-grid {
     display: grid;
@@ -1768,6 +1785,15 @@ code {
   /* Long mode names (Ukrainian) fit three across on the narrowest phones */
   #write-mode .btn {
     padding: 6px 4px;
+  }
+
+  .write-controls .btn-icon {
+    min-width: 40px;
+    padding: 6px 4px;
+  }
+
+  .write-speed .btn {
+    padding: 6px 6px;
   }
 
   .tab {
