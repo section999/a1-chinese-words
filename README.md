@@ -16,7 +16,9 @@ The whole word is written one character per grid box (田字格). When one chara
 
 - **Watch**: plays every stroke from the first character's first stroke to the last character's last stroke. Pick the speed (0.4x / 0.7x / 1.3x); pressing a speed replays at that speed.
 - **Trace**: trace the faint characters. A hint appears after 2 misses on the same stroke.
-- **From memory**: write from the meaning and pinyin only. A hint appears after 3 misses on the same stroke. The result (missed strokes, hints) is recorded.
+- **From memory**: write from the meaning and pinyin only. A hint appears after 3 misses on the same stroke. The result (score, missed strokes, hints) is recorded; the Writing screen shows the best score.
+- **Score** (Trace and From memory): each stroke earns 1 point on the first try, 0.5 after mistakes, 0 after a hint; the word's score is the average × 100 (★★★ from 90, ★★ from 70). "↺ Again" on a character can't raise its strokes' scores.
+- Stroke matching is more forgiving than Hanzi Writer's default (leniency 1.5 in Trace, 1.25 in From memory), and tapping a dot stroke (丶) counts as drawing it.
 
 The ← / → buttons at the bottom of the card move to the previous / next word, following the **Order** setting (By number / Shuffle). A word can also be opened directly by address, like `#write/83`; the pencil buttons in the word list and flashcards go to that address.
 "From memory" records are stored separately from learned-word progress and are shown on the Writing screen and in the home progress summary.

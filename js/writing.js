@@ -13,6 +13,10 @@
   };
   // Show a hint after this many misses on the same stroke.
   var HINT_AFTER = { trace: 2, test: 3 };
+  // How far a drawn stroke may stray and still match (Hanzi Writer default 1). Measured on
+  // simulated sloppy strokes: trace 1.5 accepts ~96% of very sloppy strokes; test 1.25 keeps
+  // wrong strokes (the nearest other stroke) accepted under ~7%, since test results are recorded.
+  var LENIENCY = { trace: 1.5, test: 1.25 };
 
   // Stroke data (~600KB) and Hanzi Writer load the first time the tab is shown.
   var SCRIPTS = ['data/strokes.js', 'vendor/hanzi-writer.min.js'];
@@ -51,6 +55,7 @@
       var r = raw[key];
       if (id === null || !App.util.isPlainObject(r) || typeof r.tries !== 'number' || r.tries < 1) return;
       records[id] = { tries: r.tries, best: typeof r.best === 'number' ? r.best : 0 };
+      if (typeof r.bestScore === 'number' && r.bestScore >= 0 && r.bestScore <= 100) records[id].bestScore = r.bestScore;
       if (App.util.isDateStr(r.last)) records[id].last = r.last;
     });
   })();
@@ -113,10 +118,11 @@
     return records[id] || null;
   }
 
-  function saveRecord(id, mistakes) {
+  function saveRecord(id, mistakes, score) {
     var r = records[id] || { tries: 0, best: null };
     r.tries++;
     r.best = r.best === null ? mistakes : Math.min(r.best, mistakes);
+    r.bestScore = typeof r.bestScore === 'number' ? Math.max(r.bestScore, score) : score;
     r.last = App.util.today();
     records[id] = r;
     App.storage.set('writing', records);
@@ -226,6 +232,7 @@
     }
     return (
       '<div class="write-result" role="status">' +
+      scoreHtml(wordScore(s)) +
       '<p>' + esc(text) + '</p>' + detail +
       '<div class="button-row">' +
       '<button type="button" class="btn" data-write="restart">' + esc(t('writeAgain')) + '</button>' +
@@ -236,7 +243,11 @@
 
   function recordHtml() {
     var r = record(session.word.id);
-    return r ? esc(t('writeRecord', { m: r.best, n: r.tries })) : '';
+    if (!r) return '';
+    // Records from before scoring have only the fewest wrong strokes.
+    return esc(typeof r.bestScore === 'number'
+      ? t('writeRecordScore', { s: r.bestScore, n: r.tries })
+      : t('writeRecord', { m: r.best, n: r.tries }));
   }
 
   /* ---- Partial updates (keep the Hanzi Writer instances alive) ---- */
@@ -415,6 +426,9 @@
       // Mistakes/hints from earlier attempts at a character ("↺ Again"), so retrying can't clean the record.
       carried: chars.map(function () { return 0; }),
       carriedHints: chars.map(function () { return 0; }),
+      // Per-stroke score (1 / 0.5 / 0); a retried character keeps the lower score of each stroke.
+      strokeScores: chars.map(function () { return []; }),
+      hinted: chars.map(function () { return {}; }), // stroke numbers that showed a hint in this attempt
       listeners: [], // document listeners Hanzi Writer added, removed in teardown()
       strokesDone: chars.map(function () { return 0; }),
       active: -1,
@@ -491,6 +505,30 @@
     }
   }
 
+  /** 0–100: average of the stroke scores over every stroke of the word. */
+  function wordScore(s) {
+    if (!s.total) return 0;
+    var points = 0;
+    s.strokeScores.forEach(function (list) {
+      list.forEach(function (v) { points += v || 0; });
+    });
+    return Math.round((points / s.total) * 100);
+  }
+
+  /** ★★★ from 90, ★★ from 70, ★ below. */
+  function stars(score) {
+    return score >= 90 ? 3 : score >= 70 ? 2 : 1;
+  }
+
+  function scoreHtml(score) {
+    var n = stars(score);
+    return (
+      '<p class="write-score"><strong>' + esc(t('writeScore', { s: score })) + '</strong> ' +
+      '<span class="write-stars" aria-hidden="true">' + '★'.repeat(n) + '<span class="write-stars-off">' + '★'.repeat(3 - n) + '</span></span>' +
+      '<span class="visually-hidden">' + esc(t('scoreStars', { n: n })) + '</span></p>'
+    );
+  }
+
   function totalMistakes(s) {
     return sum(s.carried) + sum(s.mistakes);
   }
@@ -558,18 +596,26 @@
     s.carriedHints[i] += s.hints[i];
     s.mistakes[i] = 0;
     s.hints[i] = 0;
+    s.hinted[i] = {};
     updateCells();
     updateCounter();
 
     w.quiz({
       showHintAfterMisses: threshold,
+      leniency: LENIENCY[state.mode],
       onMistake: function (d) {
         if (session !== s || run !== s.run) return;
         s.mistakes[i] = d.totalMistakes;
-        if (d.mistakesOnStroke === threshold) s.hints[i]++;
+        if (d.mistakesOnStroke === threshold) {
+          s.hints[i]++;
+          s.hinted[i][d.strokeNum] = true;
+        }
       },
       onCorrectStroke: function (d) {
         if (session !== s || run !== s.run) return;
+        var score = s.hinted[i][d.strokeNum] ? 0 : d.mistakesOnStroke > 0 ? 0.5 : 1;
+        var prev = s.strokeScores[i][d.strokeNum];
+        s.strokeScores[i][d.strokeNum] = prev === undefined ? score : Math.min(prev, score);
         s.strokesDone[i] = d.strokeNum + 1;
         s.mistakes[i] = d.totalMistakes;
         updateCounter();
@@ -593,7 +639,7 @@
     s.active = -1;
     if (state.mode === 'test' && !s.saved) {
       s.saved = true;
-      saveRecord(s.word.id, totalMistakes(s));
+      saveRecord(s.word.id, totalMistakes(s), wordScore(s));
     }
     s.revealed = true;
     relabel();
@@ -623,6 +669,42 @@
         w.updateColor(key, c[key], { duration: 0 });
       });
     });
+  }
+
+  /* ---- Dots by tapping ---- */
+
+  /**
+   * Hanzi Writer ignores a stroke with fewer than two points, so tapping a dot (丶)
+   * never counts. When the pen lifts without moving, add one short move (6px) along
+   * the stroke being asked for, just before Hanzi Writer ends the stroke (pointerup
+   * fires before mouseup / touchend). A dot then matches; a tap on a long stroke is
+   * still far too short and counts as a mistake.
+   */
+  function initTapDots() {
+    var tap = null;
+    el.area.addEventListener('pointerdown', function (e) {
+      var target = e.target.closest && e.target.closest('.write-target');
+      tap = target ? { x: e.clientX, y: e.clientY, svg: target.querySelector('svg'), moved: false } : null;
+    }, true);
+    el.area.addEventListener('pointermove', function (e) {
+      if (tap && Math.hypot(e.clientX - tap.x, e.clientY - tap.y) > 1) tap.moved = true;
+    }, true);
+    document.addEventListener('pointerup', function () {
+      var t = tap;
+      tap = null;
+      var s = session;
+      if (!t || t.moved || !t.svg || !s || state.mode === 'view' || s.active < 0) return;
+      var med = STROKES[s.chars[s.active]].medians[s.strokesDone[s.active]];
+      if (!med) return;
+      var a = med[0], z = med[med.length - 1];
+      var dx = z[0] - a[0], dy = a[1] - z[1]; // stroke data has y pointing up
+      var len = Math.hypot(dx, dy) || 1;
+      t.svg.dispatchEvent(new MouseEvent('mousemove', {
+        bubbles: true,
+        clientX: t.x + (dx / len) * 6,
+        clientY: t.y + (dy / len) * 6,
+      }));
+    }, true);
   }
 
   /* ---- Navigation ---- */
@@ -724,6 +806,7 @@
 
 
     el.area.addEventListener('click', onAreaClick);
+    initTapDots();
 
     el.mode.addEventListener('click', function (e) {
       var b = e.target.closest('[data-write-mode]');
@@ -769,5 +852,6 @@
     linkHtml: linkHtml,
     record: record,
     recordCount: function () { return Object.keys(records).length; },
+    score: function () { return session && session.finished ? wordScore(session) : null; },
   };
 })(window.App);
