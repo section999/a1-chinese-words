@@ -6,14 +6,35 @@
   var supported = !!synth && typeof window.SpeechSynthesisUtterance === 'function';
   var voice = null;
 
+  /** Higher is better; -1 means not a Chinese voice. */
+  function score(v) {
+    var lang = v.lang || '';
+    var id = (v.name + ' ' + v.voiceURI).toLowerCase();
+    var s;
+    if (/^zh[-_]cn/i.test(lang) || /^cmn/i.test(lang)) s = 30;
+    else if (/^zh/i.test(lang) && !/hk|tw|yue/i.test(lang)) s = 20;
+    else if (/^zh/i.test(lang)) s = 10; // Taiwan / Hong Kong: last resort
+    else return -1;
+    // Neural and enhanced voices: Edge "(Natural)" / "Online", Chrome "Google 普通话", Apple Enhanced / Premium
+    if (/natural|neural/.test(id)) s += 50;
+    else if (/premium|enhanced/.test(id)) s += 45;
+    else if (/google/.test(id)) s += 40;
+    else if (/online/.test(id)) s += 35;
+    if (/compact|espeak/.test(id)) s -= 15; // small robotic voices
+    if (v.localService === false) s += 1;
+    return s;
+  }
+
   function pickVoice() {
-    var voices = synth.getVoices();
-    voice =
-      voices.find(function (v) { return v.lang === 'zh-CN'; }) ||
-      voices.find(function (v) { return /^zh[-_]CN/i.test(v.lang); }) ||
-      voices.find(function (v) { return /^(zh|cmn)/i.test(v.lang) && !/HK|TW/i.test(v.lang); }) ||
-      voices.find(function (v) { return /^(zh|cmn)/i.test(v.lang); }) ||
-      null;
+    voice = null;
+    var best = -1;
+    synth.getVoices().forEach(function (v) {
+      var s = score(v);
+      if (s > best) {
+        best = s;
+        voice = v;
+      }
+    });
   }
 
   if (supported) {
