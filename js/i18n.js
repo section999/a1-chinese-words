@@ -53,6 +53,9 @@
       deckNoLearned: 'No learned words yet. Press "I know" on a flashcard to add words here.',
       reviewUnknown: 'Review {n} unknown {n|word|words}',
       restartDeck: 'Start over',
+      cardsIntro: 'Look at the hanzi, recall its meaning, then flip the card to check.',
+      cardsStart: 'Start flashcards',
+      cardsNewDeck: 'Choose another deck',
 
       quizLength: 'Questions',
       quizSource: 'Words from',
@@ -183,6 +186,9 @@
       deckNoLearned: '아직 외운 단어가 없어요. 플래시카드에서 "알아요"를 누르면 여기에 모여요.',
       reviewUnknown: '모르는 단어 {n}개 다시 보기',
       restartDeck: '처음부터 다시',
+      cardsIntro: '한자를 보고 뜻을 떠올린 다음, 카드를 뒤집어 확인하세요.',
+      cardsStart: '플래시카드 시작',
+      cardsNewDeck: '다른 덱 고르기',
 
       quizLength: '문제 수',
       quizSource: '출제 범위',
@@ -314,6 +320,9 @@
       deckNoLearned: 'Вивчених слів поки немає. Натисніть «Знаю» на картці, щоб додати слова сюди.',
       reviewUnknown: 'Повторити невідомі ({n})',
       restartDeck: 'Почати спочатку',
+      cardsIntro: 'Подивіться на ієрогліф, пригадайте переклад і переверніть картку, щоб перевірити.',
+      cardsStart: 'Почати картки',
+      cardsNewDeck: 'Вибрати іншу колоду',
 
       quizLength: 'Кількість питань',
       quizSource: 'Слова для тесту',

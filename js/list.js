@@ -250,7 +250,7 @@
     });
 
     el.practice.addEventListener('click', function () {
-      App.cards.setMode('favorites');
+      App.cards.startDeck('favorites');
       location.hash = 'cards';
     });
 

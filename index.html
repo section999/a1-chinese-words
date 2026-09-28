@@ -197,26 +197,7 @@
       <!-- Flashcards -->
       <section class="panel" id="panel-cards" role="tabpanel" aria-labelledby="tab-cards" hidden>
         <h1 class="panel-title visually-hidden"><span data-i18n="tabCards">Flashcards</span></h1>
-
-        <div class="toolbar">
-          <div>
-            <span class="field-label" id="deck-label" data-i18n="show">Show</span>
-            <div class="segmented seg-grid" role="group" aria-labelledby="deck-label" id="deck-mode">
-              <button type="button" class="btn" data-deck="all" data-i18n="filterAll">All</button>
-              <button type="button" class="btn" data-deck="learned" data-i18n="filterLearned">Learned</button>
-              <button type="button" class="btn" data-deck="unlearned" data-i18n="filterUnlearned">Not yet</button>
-              <button type="button" class="btn" data-deck="favorites" data-i18n="filterFavorites">Favorites</button>
-            </div>
-          </div>
-          <div>
-            <span class="field-label" id="order-label" data-i18n="order">Order</span>
-            <div class="segmented" role="group" aria-labelledby="order-label" id="deck-order">
-              <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
-              <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
-            </div>
-          </div>
-        </div>
-
+        <!-- Setup screen (Show / Order / Start), then the deck; built by flashcards.js -->
         <div id="card-area"></div>
         <p class="visually-hidden" id="card-live" aria-live="polite"></p>
         <p class="hint" id="card-hint"></p>
