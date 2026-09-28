@@ -1,0 +1,4 @@
+site: a1-chinese-500-words
+
+build:
+  output: .
