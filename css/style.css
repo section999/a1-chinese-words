@@ -1478,12 +1478,8 @@ code {
   white-space: nowrap;
 }
 
+/* "Jump to" on its own line, the three links together on the next */
 .home-modes {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px 16px;
   margin: 24px 0 0;
   padding-top: 20px;
   border-top: 1px solid var(--bg-3);
@@ -1491,7 +1487,16 @@ code {
 }
 
 .home-modes-label {
+  margin: 0;
   color: var(--fg-3);
+}
+
+.home-modes-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 16px;
+  margin: 0;
 }
 
 .home-modes a {
@@ -1517,6 +1522,11 @@ code {
 .home-import {
   margin: 16px 0 0;
   color: var(--fg-2);
+}
+
+/* Question on one line, "Import progress" under it */
+.home-import-prompt {
+  display: block;
 }
 
 .home-card .backup-message {
