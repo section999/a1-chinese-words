@@ -41,6 +41,7 @@
       importFailed: "Couldn't read the progress file. Make sure it is a .json file exported from this site.",
 
       order: 'Order',
+      listOptions: 'Show and order',
       orderNumber: 'By number',
       orderShuffle: 'Shuffle',
       flipHint: 'Tap or click the card to flip',
@@ -170,6 +171,7 @@
       importFailed: '진도 파일을 읽을 수 없어요. 이 사이트에서 내보낸 .json 파일인지 확인해 주세요.',
 
       order: '순서',
+      listOptions: '보기·순서',
       orderNumber: '번호순',
       orderShuffle: '섞기',
       flipHint: '카드를 눌러서 뒤집기',
@@ -300,6 +302,7 @@
       importFailed: 'Не вдалося прочитати файл. Переконайтеся, що це .json-файл, експортований із цього сайту.',
 
       order: 'Порядок',
+      listOptions: 'Показ і порядок',
       orderNumber: 'За номером',
       orderShuffle: 'Перемішати',
       flipHint: 'Натисніть на картку, щоб перевернути',

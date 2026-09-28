@@ -138,26 +138,39 @@
       <section class="panel" id="panel-list" role="tabpanel" aria-labelledby="tab-list">
         <h1 class="panel-title visually-hidden"><span data-i18n="tabList">Word list</span></h1>
 
-        <div class="toolbar list-toolbar">
-          <div>
-            <label class="field-label" for="search" data-i18n="search">Search</label>
-            <input class="input" type="search" id="search" autocomplete="off" spellcheck="false"
-                   data-i18n-placeholder="searchPlaceholder">
-          </div>
-          <div>
-            <span class="field-label" id="filter-label" data-i18n="show">Show</span>
-            <div class="segmented seg-grid" role="group" aria-labelledby="filter-label" id="list-filter">
-              <button type="button" class="btn" data-filter="all" data-i18n="filterAll">All</button>
-              <button type="button" class="btn" data-filter="learned" data-i18n="filterLearned">Learned</button>
-              <button type="button" class="btn" data-filter="unlearned" data-i18n="filterUnlearned">Not yet</button>
-              <button type="button" class="btn" data-filter="favorites" data-i18n="filterFavorites">Favorites</button>
+        <!-- Phones: sticks under the header; Show and Order fold behind the options button. -->
+        <div class="toolbar list-toolbar" id="list-toolbar">
+          <div class="list-search-row">
+            <div class="list-search">
+              <label class="field-label" for="search" data-i18n="search">Search</label>
+              <input class="input" type="search" id="search" autocomplete="off" spellcheck="false"
+                     data-i18n-placeholder="searchPlaceholder">
             </div>
+            <button type="button" class="btn btn-icon list-options-toggle" id="list-options-toggle"
+                    aria-expanded="false" aria-controls="list-options"
+                    data-i18n-aria-label="listOptions" data-i18n-title="listOptions" aria-label="Show and order" title="Show and order">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M7 12h10M10 17h4"/>
+              </svg>
+              <span class="list-options-dot" aria-hidden="true"></span>
+            </button>
           </div>
-          <div>
-            <span class="field-label" id="list-order-label" data-i18n="order">Order</span>
-            <div class="segmented" role="group" aria-labelledby="list-order-label" id="list-order">
-              <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
-              <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
+          <div class="list-options" id="list-options">
+            <div>
+              <span class="field-label" id="filter-label" data-i18n="show">Show</span>
+              <div class="segmented seg-grid" role="group" aria-labelledby="filter-label" id="list-filter">
+                <button type="button" class="btn" data-filter="all" data-i18n="filterAll">All</button>
+                <button type="button" class="btn" data-filter="learned" data-i18n="filterLearned">Learned</button>
+                <button type="button" class="btn" data-filter="unlearned" data-i18n="filterUnlearned">Not yet</button>
+                <button type="button" class="btn" data-filter="favorites" data-i18n="filterFavorites">Favorites</button>
+              </div>
+            </div>
+            <div>
+              <span class="field-label" id="list-order-label" data-i18n="order">Order</span>
+              <div class="segmented" role="group" aria-labelledby="list-order-label" id="list-order">
+                <button type="button" class="btn" data-order="number" data-i18n="orderNumber">By number</button>
+                <button type="button" class="btn" data-order="shuffle" data-i18n="orderShuffle">Shuffle</button>
+              </div>
             </div>
           </div>
         </div>
